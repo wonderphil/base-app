@@ -18,7 +18,7 @@ services:
   #     - base-app-redis:/var/lib/redis/data
 
   web:
-    build: .
+    image: base_app_web
     links:
       - "postgres:container_db.local"
       # - redis

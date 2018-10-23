@@ -7,9 +7,9 @@ Rails.application.configure do
   config.cache_classes = false
 
   # Docker Logging Config
-  config.log_level = :info
-  config.log_tags  = [:subdomain, :uuid]
-  config.logger    = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+  logger           = ActiveSupport::Logger.new(STDOUT)
+  logger.formatter = config.log_formatter
+  config.logger    = ActiveSupport::TaggedLogging.new(logger)
 
   # Do not eager load code on boot.
   config.eager_load = false
