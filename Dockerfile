@@ -1,6 +1,7 @@
 FROM ruby:2.5.1
 LABEL maintainer="Philip Davies <me@daviesp.co.uk>"
 
+RUN printenv
 # Install dependencies:
 # - build-essential: To ensure certain gems can be compiled
 # - nodejs: Compile assets
@@ -22,18 +23,20 @@ WORKDIR $INSTALL_PATH
 
 # Ensure gems are cached and only get updated when they change. This will
 # drastically increase build times when your gems do not change.
-COPY Gemfile Gemfile
-RUN bundle install
+COPY Gemfile Gemfile.lock ./
+RUN bundle install --binstubs
 
 # Copy in the application code from your work station at the current directory
 # over to the working directory.
 COPY . .
 
 # Provide dummy data to Rails so it can pre-compile assets.
-RUN bundle exec rake RAILS_ENV=production DATABASE_URL=postgresql://user:pass@127.0.0.1/dbname SECRET_TOKEN=pickasecuretoken assets:precompile
+RUN if [ "$BUNDLE_EXEC" == "true" ]; \
+      then bundle exec rake RAILS_ENV=production DATABASE_URL=postgresql://user:pass@127.0.0.1/dbname SECRET_TOKEN=pickasecuretoken assets:precompile; \
+    fi 
 
 # Expose a volume so that nginx will be able to read in assets in production.
 VOLUME ["$INSTALL_PATH/public"]
 
 # The default command that gets ran will be to start the Unicorn server.
-CMD ["./startup.sh"]
+CMD ["docker/startup.sh"]

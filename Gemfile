@@ -7,26 +7,28 @@ ruby '2.5.1'
 # App and System gems
 gem 'rails', '~> 5.2.1'                     # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'pg', '>= 0.18', '< 2.0'                # Use postgresql as the database for Active Record
-# gem 'redis', '~> 4.0'                       # Use Redis adapter to run Action Cable in production
+gem 'redis', '~> 4.0'                       # Use Redis adapter to run Action Cable in production
 gem 'bcrypt', '~> 3.1.11'                   # Use ActiveModel has_secure_password
 gem 'unicorn'                               # Web Server used in docker
 gem 'bootsnap', '>= 1.1.0', require: false  # Reduces boot times through caching; required in config/boot.rb
+gem 'cookies_eu'                            # Adds cookie constent banner
+gem 'rack-timeout', '~> 0.5'                # Use Rack Timeout. Read more: https://github.com/heroku/rack-timeout
+gem 'sidekiq', '~> 5.1'                     # Use Sidekiq as a background job processor through Active Job
+# gem 'clockwork', '~> 2.0'                   # Use Clockwork for recurring background tasks without needing cron
 # gem "attr_encrypted", "~> 3.0.0"            # Encrypt fields in the DB https://github.com/attr-encrypted/attr_encrypted
 # gem 'aws-sdk', '~> 3'                       # AWS SDK gem https://aws.amazon.com/sdk-for-ruby/
 # gem "cocoon"                                # NEsted Forms
 # gem 'paper_trail'                           # For versioning of model
 # gem 'validate_url'                          # validates that url is valid
-gem 'cookies_eu'                      # Adds cookie constent banner
 # gem 'date_validator'                        # A simple date validator for Rails
-
 
 # Styles and JS gems
 gem 'sass-rails', '~> 5.0'                  # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'                  # Use Uglifier as compressor for JavaScript assets
-# gem 'mini_racer', platforms: :ruby          # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jbuilder', '~> 2.5'                    # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'turbolinks', '~> 5'                    # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'bootstrap', '~> 4.1.2'
+# gem 'mini_racer', platforms: :ruby          # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'jquery-rails'
 # gem 'jquery-migrate-rails'
 # gem 'will_paginate',           '3.1.5'
@@ -71,9 +73,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
-  gem 'rails_real_favicon'                   # Creates rails supported favicon
-  gem 'rails-erd'                            # creates database diagrams
-  gem "lol_dba"                              # Find missing indexs
+  gem 'rails_real_favicon'                    # Creates rails supported favicon
+  gem 'rails-erd'                             # creates database diagrams
+  gem "lol_dba"                               # Find missing indexs
+  gem 'rack-mini-profiler', '~> 1.0'          # Enable a debug toolbar to help profile your application
 end
 
 group :test do

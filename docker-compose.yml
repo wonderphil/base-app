@@ -1,34 +1,57 @@
 version: '3'
 services:
   postgres:
-    image: postgres:9.4.5
-    environment:
-      POSTGRES_USER: base-app_development
-      POSTGRES_PASSWORD: rails
-    ports:
-      - '5432:5432'
+    image: postgres
     volumes:
-      - base-app-postgres:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: rails
+      POSTGRES_USER: rails
 
-  # redis:
-  #   image: redis:3.0.5
-  #   ports:
-  #     - '6379:6379'
-  #   volumes:
-  #     - base-app-redis:/var/lib/redis/data
+  redis:
+    image: 'redis:4.0-alpine'
+    command: redis-server --requirepass yourpassword
+    volumes:
+      - 'redis:/data'
+
+  sidekiq:
+    depends_on:
+      - postgres
+      - redis
+    build: .
+    command: sidekiq -C config/sidekiq.yml.erb
+    volumes:
+      - .:/app
+    env_file:
+      - ./docker/.env
+      - ./docker/.sidekie.env
+
+  cable:
+    depends_on:
+      - redis
+    build: .
+    command: unicorn -p 28080 cable/config.ru
+    ports:
+      - '28080:28080'
+    volumes:
+      - .:/app
+    env_file:
+      - ./docker/.env
+      - ./docker/.cable.env
 
   web:
-    image: base_app_web
+    build: . 
     links:
-      - "postgres:container_db.local"
-      # - redis
+      - "postgres:db.local"
+      - redis
     volumes:
-      - .:/base-app
+      - .:/app
     ports:
-      - '8000:8000'
+      - '8000:8080'
     env_file:
-      - ./config/environments/.app.env
-      - ./config/environments/.app_dev.env
+      - ./docker/.env
+      - ./docker/.web.env
 
 volumes:
-  base-app-postgres:
+  postgres:
+  redis:

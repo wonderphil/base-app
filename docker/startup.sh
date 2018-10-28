@@ -2,18 +2,18 @@
 
 set -e
 
-host="$DB_HOST"
-username="$DB_USER"
-DB="$DB_NAME"
 
-#bundle update
+export DB="$DB_DATABASE"_"$RAILS_ENV"
+echo $DB
+
 
 if [ "$SKIP_PSQL_AVAILABLE" = "true" ]
 then
   echo "SKIPPING CHECK OF DATABASE BEING ALIVE"
 else
   echo "Checking if Postgres is alive:"
-  until PGPASSWORD="$DB_PASS" psql -h "$host" -U "$username" -c '\q'; do
+
+  until PGPASSWORD="$DB_PASS" psql -h "$DB_HOST" -U "$DB_USER" -c '\q'; do
     >&2 echo "Postgres is unavailable - sleeping"
     sleep 5
   done
@@ -25,7 +25,7 @@ then
   echo "SKIPPING SETUP DATABASE"
 else
   echo "Checking if Database exists:"
-  until PGPASSWORD="$DB_PASS" psql -h "$host" -U "$username" -lqt | cut -d \| -f 1 | grep -qw $DB; do
+  until PGPASSWORD="$DB_PASS" psql -h "$DB_HOST" -U "$DB_USER" -lqt | cut -d \| -f 1 | grep -qw "$DB"; do
     echo "Database doesn't exist, will run rake db:setup!"
     rake db:setup
     rake db:migrate
