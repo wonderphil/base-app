@@ -1,9 +1,19 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  alias_method :facebook, :do_omniauth
-  alias_method :google, :do_omniauth
-  alias_method :amazon, :do_omniauth
-  alias_method :twitter, :do_omniauth
+  # alias_method :facebook, :do_omniauth
+  # alias_method :google, :do_omniauth
+  # alias_method :amazon, :do_omniauth
+  # alias_method :twitter, :do_omniauth
+
+  def amazon
+    do_omniauth
+  end
+
+  def failure
+    redirect_to root_path
+  end
+
+  private
 
   # It provides central callback for OmniAuth
   def do_omniauth
@@ -21,10 +31,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
 
-  end
-
-  def failure
-    redirect_to root_path
   end
 
 end

@@ -56,8 +56,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # Simplify factory_girl syntax
-  config.include FactoryGirl::Syntax::Methods
+  # Simplify factory_bot syntax
+  config.include FactoryBot::Syntax::Methods
 
   # Clean up the test DB after each run by truncating all the tables
   config.after :suite do

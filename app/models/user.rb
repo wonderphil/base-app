@@ -9,12 +9,17 @@ class User < ApplicationRecord
          :password_archivable, :expirable, 
          :omniauthable, :omniauth_providers => [:google, :facebook, :amazon, :twitter]
 
+  
+  
+  validates :email, presence: true, 'valid_email2/email': { mx: true, disposable: true }
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
+      user.provider = auth.provider
+      user.uid = auth.uid
     end
   end
   
-  validates :email, presence: true, 'valid_email2/email': { mx: true, disposable: true }
 end

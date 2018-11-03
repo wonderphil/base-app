@@ -14,30 +14,30 @@ services:
     volumes:
       - 'redis:/data'
 
-  sidekiq:
-    depends_on:
-      - postgres
-      - redis
-    build: .
-    command: sidekiq -C config/sidekiq.yml.erb
-    volumes:
-      - .:/app
-    env_file:
-      - ./docker_env/.env
-      - ./docker_env/.sidekie.env
+  # sidekiq:
+  #   depends_on:
+  #     - postgres
+  #     - redis
+  #   build: .
+  #   command: sidekiq -C config/sidekiq.yml.erb
+  #   volumes:
+  #     - .:/app
+  #   env_file:
+  #     - ./docker_env/.env
+  #     - ./docker_env/.sidekie.env
 
-  cable:
-    depends_on:
-      - redis
-    build: .
-    command: unicorn -p 28080 cable/config.ru
-    ports:
-      - '28080:28080'
-    volumes:
-      - .:/app
-    env_file:
-      - ./docker_env/.env
-      - ./docker_env/.cable.env
+  # cable:
+  #   depends_on:
+  #     - redis
+  #   build: .
+  #   command: unicorn -p 28080 cable/config.ru
+  #   ports:
+  #     - '28080:28080'
+  #   volumes:
+  #     - .:/app
+  #   env_file:
+  #     - ./docker_env/.env
+  #     - ./docker_env/.cable.env
 
   web:
     build: . 

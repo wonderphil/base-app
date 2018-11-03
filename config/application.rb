@@ -62,7 +62,6 @@ module BaseApp
     origins.map! { |url| /#{url}/ }
     config.action_cable.allowed_request_origins = origins
 
-    # Whitelist web console ips
-    config.web_console.whitelisted_ips = '172.21.0.1/8' # docker range
+    
   end
 end

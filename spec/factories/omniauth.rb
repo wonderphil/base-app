@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   # When calling auth_hash, use one of the traits listed below for a
   # facebook user, google user or when testing a user who does not
   # persist, use the does_not_persist trait.
@@ -15,19 +15,19 @@ FactoryGirl.define do
     end
 
     trait :facebook do
-      provider "facebook"
+      provider { "facebook" }
       sequence(:uid)
-      email "testuser@facebook.com"
+      email { "testuser@facebook.com" }
     end
 
     trait :google do
-      provider "google"
+      provider { "google" }
       sequence(:uid)
-      email "testuser@gmail.com"
+      email { "testuser@gmail.com" }
     end
 
     trait :does_not_persist do
-      email ""
+      email { "" }
     end
 
   end

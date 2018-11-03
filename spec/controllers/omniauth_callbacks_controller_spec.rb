@@ -11,7 +11,7 @@ RSpec.describe OmniauthCallbacksController, :type => :controller do
     context 'Success handling' do
 
       before(:each) do
-        request.env['omniauth.auth'] = FactoryGirl.create(:auth_hash, :facebook)
+        request.env['omniauth.auth'] = FactoryBot.create(:auth_hash, :facebook)
         get :facebook
       end
 
@@ -30,7 +30,7 @@ RSpec.describe OmniauthCallbacksController, :type => :controller do
     context 'Non-persisting User' do
 
       before(:each) do
-        request.env['omniauth.auth'] = FactoryGirl.create(
+        request.env['omniauth.auth'] = FactoryBot.create(
             :auth_hash, :facebook, :does_not_persist
         )
         get :facebook
@@ -53,7 +53,7 @@ RSpec.describe OmniauthCallbacksController, :type => :controller do
     context 'Success handling' do
 
       before(:each) do
-        request.env['omniauth.auth'] = FactoryGirl.create(:auth_hash, :google)
+        request.env['omniauth.auth'] = FactoryBot.create(:auth_hash, :google)
         get :google
       end
 
