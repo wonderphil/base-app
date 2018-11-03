@@ -12,7 +12,7 @@ development:
   <<: *default
   
  
-stage:
+staging:
   <<: *default
   
 test:

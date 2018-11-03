@@ -39,4 +39,4 @@ RUN if [ "$BUNDLE_EXEC" == "true" ]; \
 VOLUME ["$INSTALL_PATH/public"]
 
 # The default command that gets ran will be to start the Unicorn server.
-CMD ["docker/startup.sh"]
+CMD ["docker_env/startup.sh"]

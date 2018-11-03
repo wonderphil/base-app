@@ -16,7 +16,7 @@ module BaseApp
 
     # Set up logging to be the same in all environments but control the level
     # through an environment variable.
-    config.log_level = ENV['LOG_LEVEL']
+    config.log_level = ENV['LOG_LEVEL'] || "debug"
 
     # Log to STDOUT because Docker expects all processes to log here. You could
     # then redirect logs to a third party service on your own such as systemd,
@@ -38,7 +38,7 @@ module BaseApp
     }
 
     config.action_mailer.default_url_options = {
-      host: ENV['ACTION_MAILER_HOST']
+      host: ENV['ACTION_MAILER_HOST'] || {host: "localhost", port: 3000}
     }
     config.action_mailer.default_options = {
       from: ENV['ACTION_MAILER_DEFAULT_FROM']
@@ -58,9 +58,11 @@ module BaseApp
     config.action_cable.url = ENV['ACTION_CABLE_FRONTEND_URL']
 
     # Action Cable setting to allow connections from these domains.
-    origins = ENV['ACTION_CABLE_ALLOWED_REQUEST_ORIGINS'].split(',')
+    origins = (ENV['ACTION_CABLE_ALLOWED_REQUEST_ORIGINS'] || "http://localhost:3000").split(',')
     origins.map! { |url| /#{url}/ }
     config.action_cable.allowed_request_origins = origins
 
+    # Whitelist web console ips
+    config.web_console.whitelisted_ips = '172.21.0.1/8' # docker range
   end
 end

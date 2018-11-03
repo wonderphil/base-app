@@ -23,8 +23,8 @@ services:
     volumes:
       - .:/app
     env_file:
-      - ./docker/.env
-      - ./docker/.sidekie.env
+      - ./docker_env/.env
+      - ./docker_env/.sidekie.env
 
   cable:
     depends_on:
@@ -36,8 +36,8 @@ services:
     volumes:
       - .:/app
     env_file:
-      - ./docker/.env
-      - ./docker/.cable.env
+      - ./docker_env/.env
+      - ./docker_env/.cable.env
 
   web:
     build: . 
@@ -49,8 +49,8 @@ services:
     ports:
       - '8000:8080'
     env_file:
-      - ./docker/.env
-      - ./docker/.web.env
+      - ./docker_env/.env
+      - ./docker_env/.web.env
 
 volumes:
   postgres:
