@@ -28,6 +28,7 @@ gem 'uglifier', '>= 1.3.0'                  # Use Uglifier as compressor for Jav
 gem 'jbuilder', '~> 2.5'                    # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'turbolinks', '~> 5'                    # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'bootstrap', '~> 4.1.3'
+gem 'font-awesome-sass', '~> 5.5.0'
 # gem 'mini_racer', platforms: :ruby          # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery-rails'
 # gem 'jquery-migrate-rails'
@@ -52,6 +53,12 @@ gem 'recaptcha'                       # Google reCaptcha
 # gem 'pundit'                          # Auth Tools
 # gem 'rails_admin', '~> 1.3'           # Rails admin system
 # gem 'cancancan', '~> 2.0'             # CanCanCan is an authorization library
+
+#omniauth
+gem 'omniauth-amazon'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 # gem 'omniauth-bitbucket'              # Oauth Gem
 
 

@@ -24,3 +24,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Enviroment files
+/docker_env/.env

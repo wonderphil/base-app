@@ -9,7 +9,7 @@ docker volume create --name base-app-postgres
 ---
 
 ### SSH onto container:
-`docker exec -it base_app_web /bin/bash`
+`docker exec -it base_app_web_1 /bin/bash`
 
 ### How to Build web image:
 `docker build -t base_app_web .`
@@ -53,3 +53,11 @@ All settings are set in `config/initializers/devise.rb` or `config/initializers/
 * `allow_unconfirmed_access_for`  = 2 hours 
 * `send_email_changed_notification`   = true
 * `send_password_change_notification` = true 
+
+## Signup Options
+
+# Login with Amazon 
+
+* `AMAZON_CLIENT_ID`
+* `AMAZON_CLIENT_SECRET`
+
