@@ -1,35 +1,11 @@
 # README
 
-```
-docker volume create --name base-app-postgres
-# docker volume create --name base-app-redis
-```
+## Ruby on Rails base app Template
 
-## Docker Commands:
+There are plenty of templates out there for ruby, this is just another one.  More design around what I want in most of my apps.
+**Work in Progress**
+
 ---
-
-### SSH onto container:
-`docker exec -it base_app_web_1 /bin/bash`
-
-### How to Build web image:
-`docker build -t base_app_web .`
-
-Docker build **won't** run the app startup script!
-
-### Start Dev Environment
-`docker-compose -f docker-compose.yml up`
-
-### Push image to repo:
-1. `aws ecr get-login --no-include-email --region eu-west-1 --profile bbstage ` - run output
-2. `docker tag bbir:latest 495749002756.dkr.ecr.eu-west-1.amazonaws.com/bbir:latest`
-3. `docker push 495749002756.dkr.ecr.eu-west-1.amazonaws.com/bbir:latest`
-
-### Deploy to stage:
-`ecs-cli compose --project-name bbir-stage --file docker-compose.stage.yml service up --cluster bbstage-aws-shared-ecs-ecs-cluster --target-group-arn arn:aws:elasticloadbalancing:eu-west-1:495749002756:targetgroup/bbstage-bbir-tg/3d31a3c649b25c04 --container-name web --container-port 8000 --aws-profile bbstage --region eu-west-1`
-
-`rails credentials:edit`
-
-
 
 ### App Signup and Security Defaults
 
@@ -50,14 +26,126 @@ All settings are set in `config/initializers/devise.rb` or `config/initializers/
 * `password_length`               = 6..128
 * `remember_for`                  = remember me for 3 days
 * `confirm_within`                = confirm account within 3 hours
-* `allow_unconfirmed_access_for`  = 2 hours 
+* `allow_unconfirmed_access_for`  = 2 hours
 * `send_email_changed_notification`   = true
-* `send_password_change_notification` = true 
+* `send_password_change_notification` = true
 
-## Signup Options
+### Credential File Layout
 
-# Login with Amazon 
+```ymal
+secret_key_base:
 
-* `AMAZON_CLIENT_ID`
-* `AMAZON_CLIENT_SECRET`
+development:
+  database:
+    pass: rails
+  amazon:
+    client_id:
+    client_secret:
+  twitter:
+    api_key: 
+    api_secret:
+  google:
+    client_id:
+    client_secret:
+    recaptcha_site_key:
+    recaptcha_secret_key:
+  facebook:
+    facebook_key:
+    facebook_secret:
+  smtp:
+    username: someone@gmail.com
+    password: anything
+  redis:
+    password: yourpassword
 
+
+test:
+  database:
+    pass: rails
+  amazon:
+    client_id:
+    client_secret:
+  twitter:
+    api_key:
+    api_secret:
+  google:
+    client_id:
+    client_secret:
+    recaptcha_site_key:
+    recaptcha_secret_key:
+  facebook:
+    facebook_key:
+    facebook_secret:
+  smtp:
+    username: someone@gmail.com
+    password: anything
+  redis:
+    password: yourpassword
+
+production:
+  database:
+    pass: somethingbetterthenthis!!!
+  amazon:
+    client_id: 
+    client_secret:
+  twitter:
+    api_key: 
+    api_secret:
+  google:
+    client_id:
+    client_secret:
+    recaptcha_site_key:
+    recaptcha_secret_key:
+  facebook:
+    facebook_key:
+    facebook_secret:
+  smtp:
+    username: someone@gmail.com
+    password: anything
+  redis:
+    password: yourpassword
+```
+
+---
+
+## Helpful commands
+
+### Docker Commands
+
+---
+
+#### SSH onto container
+
+`docker exec -it base_app_web_1 /bin/bash`
+
+#### How to Build web image
+
+`docker build -t base_app_web .`
+
+Docker build **won't** run the app startup script!
+
+#### Start Dev Environment
+
+`docker-compose -f docker-compose.yml up`
+
+#### Push image to repo in AWS
+
+1. `aws ecr get-login --no-include-email --region <region> --profile <environment>` - run output
+2. `docker tag base-app:latest <repo>`
+3. `docker push <repo>`
+
+### Deploy to stage
+
+`ecs-cli compose --project-name <name> --file docker-compose.yml service up --cluster <ecs cluster> --target-group-arn <target group ARN> --container-name <container name> --container-port <container port> --aws-profile <profile name> --region <region>`
+
+### Create Volumes
+
+`docker volume create --name base-app-postgres`
+
+### Rails Commands
+
+---
+
+#### Edit credentials files
+
+`rails credentials:edit`

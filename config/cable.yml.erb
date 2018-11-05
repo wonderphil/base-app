@@ -2,7 +2,7 @@
 
 development: &default
   adapter: redis
-  url: <%= ENV['ACTION_CABLE_BACKEND_URL'] %>
+  url: redis://:<%= Rails.application.credentials[Rails.env.to_sym][:redis][:password] %>@redis:6379/0
 
 test:
   <<: *default

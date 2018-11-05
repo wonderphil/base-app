@@ -31,8 +31,8 @@ module BaseApp
       address:              ENV['SMTP_ADDRESS'],
       port:                 ENV['SMTP_PORT'].to_i,
       domain:               ENV['SMTP_DOMAIN'],
-      user_name:            ENV['SMTP_USERNAME'],
-      password:             ENV['SMTP_PASSWORD'],
+      user_name:            Rails.application.credentials[Rails.env.to_sym][:smtp][:username] || 'someone@somewhere.com',
+      password:             Rails.application.credentials[Rails.env.to_sym][:smtp][:password] || 'something',
       authentication:       ENV['SMTP_AUTH'],
       enable_starttls_auto: ENV['SMTP_ENABLE_STARTTLS_AUTO'] == 'true'
     }
@@ -43,9 +43,10 @@ module BaseApp
     config.action_mailer.default_options = {
       from: ENV['ACTION_MAILER_DEFAULT_FROM']
     }
+    
     # Set Redis as the back-end for the cache.
     config.cache_store = :redis_cache_store, {
-      url: ENV['REDIS_CACHE_URL'],
+      url: "redis://:#{Rails.application.credentials[Rails.env.to_sym][:redis][:password]}@redis:6379/0",
       namespace: ENV['REDIS_CACHE_NAMESPACE']
     }
 

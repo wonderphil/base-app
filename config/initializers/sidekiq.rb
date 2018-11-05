@@ -1,4 +1,4 @@
-sidekiq_config = { url: ENV['ACTIVE_JOB_URL'] }
+sidekiq_config = { url: "redis://:#{Rails.application.credentials[Rails.env.to_sym][:redis][:password]}@redis:6379/0" }
 
 Sidekiq.configure_server do |config|
   config.redis = sidekiq_config

@@ -52,7 +52,6 @@ services:
       - '8000:8080'
     env_file:
       - ./docker_env/.env
-      - ./docker_env/.web.env
 
 volumes:
   postgres:
