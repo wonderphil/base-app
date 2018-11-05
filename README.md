@@ -3,6 +3,17 @@
 ## Ruby on Rails base app Template
 
 There are plenty of templates out there for ruby, this is just another one.  More design around what I want in most of my apps.
+
+Runs Rails in docker with postgres DB in another container and redis in another container as well.
+
+Things still to do:
+
+1. finish off all omiauth setup (google, facebook, linked-in and twitter)
+2. move action cable to another container
+3. setup sidekq in another container
+4. css
+
+
 **Work in Progress**
 
 ---
@@ -134,7 +145,7 @@ Docker build **won't** run the app startup script!
 2. `docker tag base-app:latest <repo>`
 3. `docker push <repo>`
 
-### Deploy to stage
+### Deploy to AWS ECS
 
 `ecs-cli compose --project-name <name> --file docker-compose.yml service up --cluster <ecs cluster> --target-group-arn <target group ARN> --container-name <container name> --container-port <container port> --aws-profile <profile name> --region <region>`
 
