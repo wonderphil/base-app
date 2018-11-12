@@ -257,24 +257,32 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook,
-    Rails.application.credentials[Rails.env.to_sym][:facebook][:facebook_key],
-    Rails.application.credentials[Rails.env.to_sym][:facebook][:facebook_secret]
+  # config.omniauth :facebook,
+  #   Rails.application.credentials[Rails.env.to_sym][:facebook][:facebook_key],
+  #   Rails.application.credentials[Rails.env.to_sym][:facebook][:facebook_secret],
+  #   name: :facebook,
   
-  config.omniauth :twitter, 
-    Rails.application.credentials[Rails.env.to_sym][:twitter][:api_key],
-    Rails.application.credentials[Rails.env.to_sym][:twitter][:api_secret]
+  # config.omniauth :twitter, 
+  #   Rails.application.credentials[Rails.env.to_sym][:twitter][:api_key],
+  #   Rails.application.credentials[Rails.env.to_sym][:twitter][:api_secret]
   
   config.omniauth :google_oauth2,
     Rails.application.credentials[Rails.env.to_sym][:google][:client_id],
     Rails.application.credentials[Rails.env.to_sym][:google][:client_secret], 
-    name: 'google'
+    {
+      name: 'google',
+      scope: 'userinfo.email, userinfo.profile, plus.me',
+      prompt: 'select_account',
+      image_aspect_ratio: 'square',
+      image_size: 50
+    }
+    
   
   config.omniauth :amazon, 
     Rails.application.credentials[Rails.env.to_sym][:amazon][:client_id],
     Rails.application.credentials[Rails.env.to_sym][:amazon][:client_secret],
     {
-      :scope => 'profile postal_code profile:user_id', # default scope
+      scope: 'profile postal_code profile:user_id', # default scope
       name: 'amazon'
     }
 

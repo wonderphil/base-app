@@ -24,7 +24,7 @@ class User < ApplicationRecord
       user.password = (('0'..'30').to_a + ('a'..'z').to_a + ('A'..'Z').to_a + ["!", "@", "$", "%", "^","&"]).shuffle.first(25).join
       user.provider = auth.provider
       user.uid = auth.uid
-      user.all = auth
+      user.all = auth.to_json
     end
   end
 

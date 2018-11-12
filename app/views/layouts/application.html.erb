@@ -45,5 +45,7 @@
       <%= render 'layouts/footer' %>
     </div>
   </footer>
+  <%= render 'layouts/debug' %>
 </body>
+<%= console if Rails.env.development? %>
 </html>
