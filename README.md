@@ -127,7 +127,7 @@ production:
 
 #### SSH onto container
 
-`docker exec -it base_app_web_1 /bin/bash`
+`docker exec -it base-app_web_1 /bin/bash`
 
 #### How to Build web image
 

@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2018_11_03_222014) do
     t.string "provider"
     t.string "uid"
     t.string "all"
+    t.string "location"
+    t.string "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["expired_at"], name: "index_users_on_expired_at"

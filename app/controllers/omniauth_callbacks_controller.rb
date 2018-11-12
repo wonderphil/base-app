@@ -1,15 +1,14 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  # alias_method :facebook, :do_omniauth
-  # alias_method :google, :do_omniauth
-  # alias_method :amazon, :do_omniauth
-  # alias_method :twitter, :do_omniauth
-
   def amazon
     do_omniauth
   end
 
   def google
+    do_omniauth
+  end
+
+  def twitter
     do_omniauth
   end
 

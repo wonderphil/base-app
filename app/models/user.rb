@@ -25,6 +25,13 @@ class User < ApplicationRecord
       user.provider = auth.provider
       user.uid = auth.uid
       user.all = auth.to_json
+      user.name = auth.info.name
+      if auth.provider == 'amazon'
+        user.location = auth.extra.postal_code
+      else
+        user.image = auth.info.image
+        user.location = auth.info.location
+      end
     end
   end
 
