@@ -12,6 +12,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     do_omniauth
   end
 
+  def facebook
+    do_omniauth
+  end
+
   def failure
     redirect_to root_path
   end
