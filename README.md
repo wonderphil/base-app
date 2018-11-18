@@ -139,6 +139,15 @@ Docker build **won't** run the app startup script!
 
 `docker-compose -f docker-compose.yml up`
 
+#### Push image to local repo
+
+```bash
+docker login -u docker_reg https://registry.sonictexture.co.uk
+docker tag base_app_web:latest registry.sonictexture.co.uk/base_app_web
+docker push registry.sonictexture.co.uk/base_app_web
+```
+
+
 #### Push image to repo in AWS
 
 1. `aws ecr get-login --no-include-email --region <region> --profile <environment>` - run output

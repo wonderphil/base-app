@@ -266,7 +266,8 @@ Devise.setup do |config|
       info_fields: 'email,name',
       display: 'page',
       image_size: 'square',
-      secure_image_url: true
+      secure_image_url: true,
+      callback_url: "https://#{ENV["ACTION_MAILER_HOST"]}/users/auth/facebook/callback"
     }
     
   
