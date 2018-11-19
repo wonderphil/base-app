@@ -28,4 +28,9 @@ module ApplicationHelper
       'danger'
     end
   end
+
+  def active_class?(link_path)
+    return 'active' if request.path == link_path
+    ''
+  end
 end

@@ -1,5 +1,11 @@
-<h1>Pages#home</h1>
+<%
+ title "Base App - Welcome"
+ meta_description 'Base App'
+ heading "Welcome!"
+%>
+
+<div class="page-header">
+  <h1 class="text-center"><%= yield :heading %></h1>
+</div>
+
 <p>Find me in app/views/pages/home.html.erb</p>
-
-
-<%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
