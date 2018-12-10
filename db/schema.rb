@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_11_03_222014) do
     t.string "all"
     t.string "location"
     t.string "image"
+    t.boolean "tcs", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["expired_at"], name: "index_users_on_expired_at"

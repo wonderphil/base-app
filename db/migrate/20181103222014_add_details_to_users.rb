@@ -7,6 +7,7 @@ class AddDetailsToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :all,      :string
     add_column :users, :location, :string
     add_column :users, :image,    :string
+    add_column :users, :tcs,      :boolean, default: false
     add_index  :users, :uid,      unique: true
   end
 end

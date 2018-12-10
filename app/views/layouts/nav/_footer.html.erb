@@ -1,9 +1,24 @@
-<footer class="footer">
+<footer class="footer ">
   <div class="container">
-    <p class="text-muted">
+    <nav>
+      <ul>
+        <li>
+          <%= link_to "Base_app Repo", "https://github.com/wonderphil/base-app", target: :_blank %>
+        </li>
+        <li>
+          <%= link_to "About Us", about_us_path %>
+        </li>
+        <li>
+          <%= link_to "Contact Us", contact_path %>
+        </li>
+        <li>
+          <%= link_to "T&C's and Privacy", privacy_path %>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright">
       &copy; <%= Time.now.year.to_s %> <%= ENV['COMPOSE_PROJECT_NAME']%> - All rights reserved
-    </p>
+    </div>
   </div>
 </footer>
-
-
+<%= render 'layouts/clicky'  %>

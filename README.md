@@ -18,6 +18,14 @@ Things still to do:
 
 ---
 
+### CSS Templates Used
+
+This template is using template from Creatived Tim https://www.creative-tim.com/
+You require to buy your own license!!
+ * Product Page: http://www.creative-tim.com/product/now-ui-kit-pro
+ * Copyright 2017 Creative Tim (http://www.creative-tim.com)
+ * View License on http://www.creative-tim.com/license
+
 ### App Signup and Security Defaults
 
 All settings are set in `config/initializers/devise.rb` or `config/initializers/devise-security.rb`.

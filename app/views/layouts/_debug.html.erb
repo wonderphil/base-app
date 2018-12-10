@@ -1,3 +1,10 @@
 <% if Rails.env.development? %>
-<%= debug(params) %> 
+  <div class="jumbotron debug">
+    <%= debug(params) %> 
+
+    <div class="container">
+      <%= console %>
+    </div>
+  </div>
 <% end %>
+

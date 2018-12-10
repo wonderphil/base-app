@@ -4,7 +4,7 @@
   <title><%= yield :title %></title>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' />
   <meta name="author" content="Philip Davies - SonicTexture.co.uk">
   <meta name="description" content="<%= yield :meta_description %>"/>
 
@@ -26,34 +26,27 @@
   <![endif]-->
 </head>
 
-<body>
-  <header>
-    <%= render 'layouts/google_analytics' %>
+  <body class="<%= yield :pclass %>">
+      
     <%= render 'layouts/nav/header'%>
-  </header>
-
-  <main role="main" class="container">
-    <div class="container">
-      <%= render 'layouts/flash' %>
-      <%= yield %>
-    </div>
+    <%= render 'layouts/flash' %>
+    <%= render 'layouts/google_analytics' %>
     
-    <div class="jumbotron debug">
-      <%= render 'layouts/debug' %>
-    </div>
-  </main>
+    <% if (current_page?(controller: 'devise/sessions', action: 'new') || current_page?(controller:'devise/registrations', action: 'new') ) && !signed_in? %>
+      <%= yield %>
+      
+    <% elsif signed_in? %>
+      <h1>Sign In</h1>
+    
+    <% else %>
+      <%= yield %>
+    <% end %>
   
-  
-  
-  
-  <div class="container">
-      <%= console if Rails.env.development? %>
-  </div>
   <%= render 'layouts/nav/footer' %>
-  <%= render 'layouts/clicky'  %>
-
-
   
+  <!-- closing div required for footer to be included everywhere -->
+  </div>
+  <%= render 'layouts/debug' %>
+    
 </body>
-
 </html>

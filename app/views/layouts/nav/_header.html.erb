@@ -1,42 +1,72 @@
- <!-- Fixed navbar -->
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <%= link_to "#{ENV['COMPOSE_PROJECT_NAME']}", root_path, class: "navbar-brand" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item <%= active_class?(root_path) %>">
-        <%= link_to root_path, class: "nav-link" do %>
-          Home <span class="sr-only">(current)</span>
-        <% end %>
-      </li>
-      <li class="nav-item <%= active_class?(about_us_path) %>">
-        <%= link_to about_us_path, class: "nav-link" do %>
-          About Us <span class="sr-only">(current)</span>
-        <% end %>
-      </li>
-      <li class="nav-item <%= active_class?(contact_path) %>">
-        <%= link_to contact_path, class: "nav-link" do %>
-          Contact Us <span class="sr-only">(current)</span>
-        <% end %>
-      </li>
-      <li class="nav-item <%= active_class?(privacy_path) %>">
-        <%= link_to privacy_path, class: "nav-link" do %>
-          Privacy <span class="sr-only">(current)</span>
-        <% end %>
-      </li>
-    </ul>
-    
-    <form class="form-inline mt-2 mt-md-0 disabled">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" disabled>
-      <button class="btn btn-outline-info my-2 my-sm-0" type="submit" disabled>Search</button>
-    </form>
-
-    <% if user_signed_in? %>
-      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger my-2 my-sm-0 ml-sm-2") %> 
-    <% else %>
-      <%= link_to "Sign In", new_user_session_path, class: "btn btn-outline-success my-2 my-sm-0 ml-sm-2" %>
-    <% end %>
+<nav class="navbar navbar-expand-lg bg-white navbar-absolute navbar-transparent">
+  <div class="container">
+    <div class="navbar-translate">
+      <%= link_to root_path, class: "navbar-brand", rel: "tooltip", title: "", "data-placement" =>"bottom"  do %>
+         <%= ENV['COMPOSE_PROJECT_NAME'] %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar bar1"></span>
+        <span class="navbar-toggler-bar bar2"></span>
+        <span class="navbar-toggler-bar bar3"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">
+      <div class="collapse navbar-collapse" id="example-navbar-primary">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item <%= active_class?(root_path) %>">
+            <%= link_to root_path, class: "nav-link" do %>
+              Home
+            <% end %>
+          </li>
+          <li class="nav-item <%= active_class?(contact_path) %>">
+            <%= link_to contact_path, class: "nav-link" do %>
+              Contact Us
+            <% end %>
+          </li>
+          <li class="nav-item <%= active_class?(about_us_path) %>">
+            <%= link_to about_us_path, class: "nav-link" do %>
+              About Us
+            <% end %>
+          </li>
+          <li class="nav-item">
+             <% if user_signed_in? %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+                Logout
+              <% end %>
+            <% else %>
+              <%= link_to new_user_registration_path, class: "nav-link" do %>
+                Sign Up
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+        
+        <ul class="nav navbar-nav">
+          <% if !user_signed_in? %>
+            <li class="nav-link">Sign in With:</li>
+            <li class="nav-item">
+              <%= link_to user_twitter_omniauth_authorize_path, class: "nav-link" do %>
+                <%= icon('fab', 'twitter') %>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to user_facebook_omniauth_authorize_path, class: "nav-link" do %>
+                <%= icon('fab', 'facebook-f') %>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to user_amazon_omniauth_authorize_path, class: "nav-link" do %>
+                <%= icon('fab', 'amazon') %>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to user_google_omniauth_authorize_path, class: "nav-link" do %>
+                <%= icon('fab', 'google') %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
 </nav>

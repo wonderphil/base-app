@@ -36,6 +36,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, :event => :authentication
       set_flash_message(:notice, :success, kind: provider_kind)
     elsif @old_user.provider != @user.provider
+      if @old_user.provider.nil?
+        @old_user.provider = "Basic Email Account"
+      end
       set_flash_message(:notice, :exists, kind_old: @old_user.provider, kind_new: provider_kind)
       redirect_to new_user_session_path
     else

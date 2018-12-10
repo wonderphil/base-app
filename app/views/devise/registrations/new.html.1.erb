@@ -30,4 +30,52 @@
   </div>
 <% end %>
 
+<h1>or sign up with</h1>
+<%= link_to image_tag("login_amazom_156x32.png"), user_amazon_omniauth_authorize_path  %>
+
 <%= render "devise/shared/links" %>
+
+
+
+<div class="field">
+    <label for="user_email">Email</label><br>
+    <input autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]" id="user_email">
+  </div>
+  
+  
+  
+  <div class="page-header section-image">
+    <div class="page-header-image signup_background" ></div>
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 ml-auto mr-auto">
+        </div>
+        <div class="col-md-4 mr-auto">
+        </div>
+        <div class="card card-signup">
+          <div class="card-body">
+            <h4 class="card-title text-center">Register</h4>
+            
+            
+          </div> 
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text"><i class="far fa-user"></i></span>
+  </div>
+  <input autofocus="autofocus" autocomplete="name" class="form-control" placeholder="Full Name..." type="text" name="user[name]" id="user_name">
+</div>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+      <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
+  </div>
+  <input type="text" class="form-control" placeholder="First Name...">
+</div>
