@@ -21,18 +21,26 @@
               <h4 class="card-title text-center">Register or Sign in with</h4>
 
               <div class="social text-center">
-                <button class="btn btn-icon btn-round btn-twitter">
-                  <%= icon('fab', 'twitter') %>
-                </button>
-                <button class="btn btn-icon btn-round btn-dribbble">
-                  <%= icon('fab', 'amazon') %>
-                </button>
-                <button class="btn btn-icon btn-round btn-facebook">
-                  <%= icon('fab', 'facebook-f') %>
-                </button>
-                <button class="btn btn-icon btn-round btn-google">
-                  <%= icon('fab', 'google') %>
-                </button>
+                <%= link_to user_twitter_omniauth_authorize_path, class: "social_login_btn" do %>
+                  <button class="btn btn-icon btn-round btn-twitter">
+                    <%= icon('fab', 'twitter') %>
+                  </button>
+                <% end %>
+                <%= link_to user_amazon_omniauth_authorize_path, class: "social_login_btn" do %>
+                  <button class="btn btn-icon btn-round btn-dribbble">
+                    <%= icon('fab', 'amazon') %>
+                  </button>
+                <% end %>
+                <%= link_to user_facebook_omniauth_authorize_path, class: "social_login_btn" do %>
+                  <button class="btn btn-icon btn-round btn-facebook">
+                    <%= icon('fab', 'facebook-f') %>
+                  </button>
+                <% end %>
+                <%= link_to user_google_omniauth_authorize_path, class: "social_login_btn" do %>
+                  <button class="btn btn-icon btn-round btn-google">
+                    <%= icon('fab', 'google') %>
+                  </button>
+                <% end %>
                 <h5 class="card-description"> or Signup Below </h5>
               </div>
 
@@ -43,7 +51,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><%= icon('far', 'user')%></span>
                   </div>
-                  <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "Full Name..." %>
+                  <%= f.text_field :name, autocomplete: "name", class: "form-control", placeholder: "Full Name..." %>
                 </div>
 
                 <div class="input-group">
@@ -81,6 +89,16 @@
 
                 <div class="card-footer text-center">
                   <%= f.submit "Sign up", class: "btn btn-primary btn-round btn-lg" %>
+                </div>
+                <div class="pull-left">
+                  <h6>
+                    <%= link_to "Sign In", new_user_session_path, class: "link footer-link" %>
+                  </h6>
+                </div>
+                <div class="pull-right">
+                  <h6>
+                    <%= link_to "Need Help?", "#", class: "link footer-link" %>
+                  </h6>
                 </div>
               <% end %>
             </div>

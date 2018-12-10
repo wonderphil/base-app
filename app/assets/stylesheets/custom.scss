@@ -19,10 +19,38 @@
   background: image-url('beach_small.jpg');
 }
 
+.signin_background {
+  background: image-url('rocky_water_small.jpg');
+}
+
 .g-recaptcha {
   display: inherit;
 }
 
 .recaptcha {
   display: inline-block;
+}
+
+.social_login_btn {
+  border-bottom: none !important;
+}
+
+.login-page .input-group.form-group-no-border.input-lg .form-control {
+  height: calc(2.25rem + 10px);
+}
+
+.login-page .page-header > .content {
+  margin-top: 5% !important;
+}
+
+.signup-page .page-header > .content {
+  margin-top: 5% !important;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
 }

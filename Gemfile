@@ -28,6 +28,9 @@ gem 'uglifier', '>= 1.3.0'                  # Use Uglifier as compressor for Jav
 gem 'jbuilder', '~> 2.5'                    # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'turbolinks', '~> 5'                    # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'bootstrap', '~> 4.1.3'
+gem 'jasny-bootstrap-rails'                 # Jasny Bootstrap extension can be found here: http://jasny.github.io/bootstrap/
+gem 'momentjs-rails'                        # Moment.js is "a lightweight javascript date library for parsing, manipulating, and formatting dates."
+gem 'nouislider-rails'                      # noUiSlider: lightweight JavaScript range slider with full touch support
 gem 'font-awesome-sass', '~> 5.5.0'
 # gem 'mini_racer', platforms: :ruby          # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery-rails'
