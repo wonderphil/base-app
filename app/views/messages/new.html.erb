@@ -16,40 +16,47 @@
           <div class="row">
             <div class="col-md-5 ml-auto mr-auto">
               <h2 class="title">Send us a message</h2>
-                <p class="description">You can contact us with anything related to our Products. We'll get in touch with you as soon as possible.
+                <p class="description">You can contact us with anything related to our Products or Services. We'll get in touch with you as soon as possible.
                   <br>
                   <br>
                 </p>
-                <form role="form" id="contact-form" method="post">
-                  <label>Your name</label>
+                <%= form_for @message, url: contact_url, id: "contact-form" do |f| %>
+                  <%= notice %>
+                  <%= @message.errors.full_messages.join(', ') %>
+
+                  <%= f.label :name %>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Your Name..." aria-label="Your Name...">
+                    <%= f.text_field :name, autocomplete: "name", class: "form-control", placeholder: "Your Name....", "aria-label" => "Your Name..." %>
                   </div>
-                  <label>Email address</label>
+                  <%= f.label :email, "Email Address" %>
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
                       </div>
-                    <input type="email" class="form-control" placeholder="Email Here..." aria-label="Email Here...">
+                      <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Email Address...", "aria-label" => "Email Here..." %>
                   </div>
-                  <label>Phone</label>
+                  <%= f.label :phone %>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="now-ui-icons tech_mobile"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Number Here...">
+                    <%= f.text_field :phone, autocomplete: "phone", class: "form-control", placeholder: "Phone Number...", "aria-label" => "Phone Number..." %>
                   </div>
                   <div class="form-group">
-                    <label>Your message</label>
-                    <textarea name="message" class="form-control" id="message" rows="6"></textarea>
+                    <%= f.label :body, "Your message" %>
+                    <%= f.text_area :body, class: "form-control", id: "message", rows: 6 %>
+                    
+                  </div>
+                  <div class="input-group recaptcha">
+                    <%= recaptcha_tags %>
                   </div>
                   <div class="submit text-center">
-                    <input type="submit" class="btn btn-primary btn-raised btn-round" value="Contact Us" />
+                    <%= f.submit "Contact Us", class: "btn btn-primary btn-raised btn-round" %>
                   </div>
-                </form>
+                <% end %>
               </div>
             <div class="col-md-5 ml-auto mr-auto">
               <div class="info info-horizontal mt-5">
