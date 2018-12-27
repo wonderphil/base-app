@@ -38,7 +38,7 @@ gem 'jquery-rails'
 # gem 'will_paginate',           '3.1.5'
 # gem 'bootstrap-will_paginate', '1.0.0'
 # gem 'jquery-easing-rails'
-# gem 'bootstrap_form'                          # Allow creating form_for easier with bootstrap
+gem "bootstrap_form", ">= 4.0.0"                          # Allow creating form_for easier with bootstrap
 # gem 'chosen-rails'                            # Allows searching through text field
 # gem "wysiwyg-rails"                           # Turns Text area into rich text editor
 # gem 'toastr-rails'                    # Javascript library for Gnome / Growl type non-blocking notifications

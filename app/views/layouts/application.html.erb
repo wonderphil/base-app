@@ -29,10 +29,13 @@
   <body class="<%= yield :pclass %>">
       
     <%= render 'layouts/nav/header'%>
-    <%= render 'layouts/flash' %>
+    
     <%= render 'layouts/google_analytics' %>
     
+    <%= render 'layouts/flash' %>
+    
     <% if (current_page?(controller: 'devise/sessions', action: 'new') || current_page?(controller:'devise/registrations', action: 'new') ) && !signed_in? %>
+
       <%= yield %>
       
     <% elsif signed_in? %>

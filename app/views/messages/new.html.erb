@@ -21,7 +21,6 @@
                   <br>
                 </p>
                 <%= form_for @message, url: contact_url, id: "contact-form" do |f| %>
-                  <%= notice %>
                   <%= @message.errors.full_messages.join(', ') %>
 
                   <%= f.label :name %>
