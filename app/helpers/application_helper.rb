@@ -42,4 +42,11 @@ module ApplicationHelper
     return 'active' if request.path == link_path
     ''
   end
+  
+  def form_errors_for(object=nil)
+    puts object
+    puts "ppppppppppppp"
+    render('shared/form_errors', object: object) unless object.blank?
+  end
+  
 end

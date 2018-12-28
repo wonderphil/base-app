@@ -1,0 +1,14 @@
+
+<% if object.errors.count > 0 %>
+  <div class="flash-padding alert alert-danger">
+    <p>
+      Please fix the below <%= pluralize(object.errors.count, "error") %>:
+    </p>
+
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

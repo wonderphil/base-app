@@ -13,11 +13,11 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
-//= require jasny-bootstrap.min
+//= require bootstrap-selectpicker
 //= require moment
 //= require nouislider
 //= require rails-ujs
 //= require activestorage
 //= require ie10-viewport-bug-workaround
-//= require turbolinks
+//= require highlight_pack
 //= require_tree .

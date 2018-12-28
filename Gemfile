@@ -26,7 +26,7 @@ gem 'sidekiq', '~> 5.1'                     # Use Sidekiq as a background job pr
 gem 'sass-rails', '~> 5.0'                  # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'                  # Use Uglifier as compressor for JavaScript assets
 gem 'jbuilder', '~> 2.5'                    # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'turbolinks', '~> 5'                    # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+# gem 'turbolinks', '~> 5'                    # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'bootstrap', '~> 4.1.3'
 gem 'jasny-bootstrap-rails'                 # Jasny Bootstrap extension can be found here: http://jasny.github.io/bootstrap/
 gem 'momentjs-rails'                        # Moment.js is "a lightweight javascript date library for parsing, manipulating, and formatting dates."
@@ -38,11 +38,11 @@ gem 'jquery-rails'
 # gem 'will_paginate',           '3.1.5'
 # gem 'bootstrap-will_paginate', '1.0.0'
 # gem 'jquery-easing-rails'
-gem "bootstrap_form", ">= 4.0.0"                          # Allow creating form_for easier with bootstrap
+# gem "bootstrap_form", ">= 4.0.0"                          # Allow creating form_for easier with bootstrap
 # gem 'chosen-rails'                            # Allows searching through text field
 # gem "wysiwyg-rails"                           # Turns Text area into rich text editor
 # gem 'toastr-rails'                    # Javascript library for Gnome / Growl type non-blocking notifications
-
+gem 'rails-highlightjs'                 # Javascript library for code syntax highlighting
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'           # Image Processor

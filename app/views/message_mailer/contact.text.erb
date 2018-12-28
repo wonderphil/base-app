@@ -1,1 +1,7 @@
-<%= @body %>
+<h1>Contact from <%= ENV['COMPOSE_PROJECT_NAME'] %></h1>
+<b>Name:</b> <%= @message.name %><br>
+<b>Email:</b> <%= @message.email %><br>
+<b>Phone:</b> <%= @message.phone %><br>
+<b>Message:</b> <%= @message.name %><br>
+<b>Job Type:</b> <%= @message.speciality %><br>
+<b>Date/Time Sent:</b> <%= Time.now %>

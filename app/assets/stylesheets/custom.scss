@@ -39,6 +39,14 @@
   background: image-url('maps_small.jpg');
 }
 
+.aboutus_background {
+  background: image-url('office_space_sm.jpg');
+}
+
+.home_background {
+  background: image-url('office_space_sm.jpg');
+}
+
 .g-recaptcha {
   display: inherit;
 }
@@ -69,4 +77,8 @@
 
 .pull-left {
   float: left;
+}
+
+ul.privacy {
+  list-style-type: none;
 }
