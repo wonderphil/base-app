@@ -12,6 +12,10 @@ module ApplicationHelper
     content_for(:heading) { page_heading }
   end
 
+  def heading_desc(page_heading_desc)
+    content_for(:heading_desc) { page_heading_desc }
+  end
+
   def pclass(page_pclass)
     content_for(:pclass) { page_pclass }
   end

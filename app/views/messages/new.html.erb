@@ -1,113 +1,113 @@
 <%
  title "#{app_title} - Contact Us"
  meta_description "Contact Us - #{app_title}"
- heading "Contact Us!"
+ heading "Conact Us"
  pclass "contact-page"
+ heading_desc ""
 %>
 
-  <div class="wrapper">
-    <div class="page-header page-header-small">
-      <div class="page-header-image contact_background" data-parallax="true"></div>
-    </div>
 
-    <div class="main">
-      <div class="contact-content">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-5 ml-auto mr-auto">
-              <h2 class="title">Send us a message</h2>
-                <p class="description">You can contact us with anything related to our Products or Services. We'll get in touch with you as soon as possible.
-                  <br>
-                  <br>
-                </p>
-                <%= form_for @message, url: contact_url, id: "contact-form" do |f| %>
-                  <%= form_errors_for @message %>
 
-                  <%= f.label :name %>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
-                    </div>
-                    <%= f.text_field :name, autocomplete: "name", class: "form-control", placeholder: "Your Name....", "aria-label" => "Your Name..." %>
-                  </div>
-                  <%= f.label :email, "Email Address" %>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
-                      </div>
-                      <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Email Address...", "aria-label" => "Email Here..." %>
-                  </div>
-                  <%= f.label :phone %>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="now-ui-icons tech_mobile"></i></span>
-                    </div>
-                    <%= f.text_field :phone, autocomplete: "phone", class: "form-control", placeholder: "Phone Number...", "aria-label" => "Phone Number..." %>
-                  </div>
-                  <div class="form-group">
-                    <%= f.label :message, "Your message" %>
-                    <%= f.text_area :message, class: "form-control", id: "message", rows: 6 %>
-                    
-                  </div>
-                  <div class="input-group recaptcha">
-                    <%= recaptcha_tags %>
-                  </div>
-                  <div class="submit text-center">
-                    <%= f.submit "Contact Us", class: "btn btn-primary btn-raised btn-round" %>
-                  </div>
-                <% end %>
+<div class="main">
+  <div class="contact-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 ml-auto mr-auto">
+          <h2 class="title">Send us a message</h2>
+          <p class="description">
+            You can contact us with anything related to our Products or Services. We'll get in touch with you as soon as possible.
+            <br>
+            <br>
+          </p>
+          <%= form_for @message, url: contact_url, id: "contact-form" do |f| %>
+            <%= form_errors_for @message %>
+
+            <%= f.label :name %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
               </div>
-            <div class="col-md-5 ml-auto mr-auto">
-              <div class="info info-horizontal mt-5">
-                <% if ENV['COMPANY_ADDRESS_1'] %>
-                  <div class="icon icon-primary">
-                    <i class="now-ui-icons location_pin"></i>
-                  </div>
-                  <div class="description">
-                    <h4 class="info-title">Find us at the office</h4>
-                    <p><%= company_address.html_safe %>
-                    </p>
-                  </div>
-                <% end %>
-              </div>
-              <div class="info info-horizontal">
-                <% if ENV['COMPANY_CONTACT_PERSON'] %>
-                  <div class="icon icon-primary">
-                    <i class="now-ui-icons tech_mobile"></i>
-                  </div>
-                  <div class="description">
-                    <h4 class="info-title">Give us a ring</h4>
-                    <p> <%= ENV['COMPANY_CONTACT_PERSON'] %>
-                      <br><%= ENV['COMPANY_CONTACT_PHONE'] %>
-                      <br><%= ENV['COMPANY_CONTACT_HOURS'] %>
-                    </p>
-                  </div>
-                  <% end %>
-              </div>
-              <div class="info info-horizontal">
-                <% if ENV['COMPANY_LEGAL'] %>
-                  <div class="icon icon-primary">
-                    <i class="business_briefcase-24 now-ui-icons"></i>
-                  </div>
-                  <div class="description">
-                    <h4 class="info-title">Legal Information</h4>
-                    <p> <%= ENV['COMPANY_NAME'] %>.
-                      <br><%= ENV['COMPANY_LEGAL_1'].html_safe %>
-                      <br><%= ENV['COMPANY_LEGAL_2'].html_safe %>
-                      <br><%= ENV['COMPANY_LEGAL_3'].html_safe %>
-                      <br><%= ENV['COMPANY_LEGAL_4'].html_safe %>
-                    </p>
-                  </div>
-                <% end %>
-              </div>
+              <%= f.text_field :name, autocomplete: "name", class: "form-control", placeholder: "Your Name....", "aria-label" => "Your Name..." %>
             </div>
+            <%= f.label :email, "Email Address" %>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
+                </div>
+                <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Email Address...", "aria-label" => "Email Here..." %>
+            </div>
+            <%= f.label :phone %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="now-ui-icons tech_mobile"></i></span>
+              </div>
+              <%= f.text_field :phone, autocomplete: "phone", class: "form-control", placeholder: "Phone Number...", "aria-label" => "Phone Number..." %>
+            </div>
+            <div class="form-group">
+              <%= f.label :message, "Your message" %>
+              <%= f.text_area :message, class: "form-control", id: "message", rows: 6 %>
+              
+            </div>
+            <div class="input-group recaptcha">
+              <%= recaptcha_tags %>
+            </div>
+            <div class="submit text-center">
+              <%= f.submit "Contact Us", class: "btn btn-primary btn-raised btn-round" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-5 ml-auto mr-auto">
+          <div class="info info-horizontal mt-5">
+            <% if ENV['COMPANY_ADDRESS_1'] %>
+              <div class="icon icon-primary">
+                <i class="now-ui-icons location_pin"></i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Find us at the office</h4>
+                <p><%= company_address.html_safe %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+          <div class="info info-horizontal">
+            <% if ENV['COMPANY_CONTACT_PERSON'] %>
+              <div class="icon icon-primary">
+                <i class="now-ui-icons tech_mobile"></i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Give us a ring</h4>
+                <p> <%= ENV['COMPANY_CONTACT_PERSON'] %>
+                  <br><%= ENV['COMPANY_CONTACT_PHONE'] %>
+                  <br><%= ENV['COMPANY_CONTACT_HOURS'] %>
+                </p>
+              </div>
+              <% end %>
+          </div>
+          <div class="info info-horizontal">
+            <% if ENV['COMPANY_LEGAL'] %>
+              <div class="icon icon-primary">
+                <i class="business_briefcase-24 now-ui-icons"></i>
+              </div>
+              <div class="description">
+                <h4 class="info-title">Legal Information</h4>
+                <p> <%= ENV['COMPANY_NAME'] %>.
+                  <br><%= ENV['COMPANY_LEGAL_1'].html_safe %>
+                  <br><%= ENV['COMPANY_LEGAL_2'].html_safe %>
+                  <br><%= ENV['COMPANY_LEGAL_3'].html_safe %>
+                  <br><%= ENV['COMPANY_LEGAL_4'].html_safe %>
+                </p>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
-    <div id="contactUs2Map" class="big-map"></div>
-<!-- leave closing div off to allow footer -->
+</div>
+
+
+<div id="contactUs2Map" class="big-map"></div>
+
 
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials[Rails.env.to_sym][:google][:maps_api_key] || 'insert_key' %>"></script>

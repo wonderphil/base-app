@@ -1,7 +1,26 @@
-<nav class="navbar navbar-expand-lg bg-white fixed-top">
+<nav class="navbar navbar-expand-lg bg-white fixed-top navbar-transparent" color-on-scroll="500">
   <div class="container">
+    <!-- Add drop down menu to logo of nav bar
+      <div class="dropdown button-dropdown">
+        <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
+          <span class="button-bar"></span>
+          <span class="button-bar"></span>
+          <span class="button-bar"></span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-header">Dropdown header</a>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">One more separated link</a>
+        </div>
+      </div>
+    -->
     <div class="navbar-translate">
-      <%= link_to root_path, class: "navbar-brand", rel: "tooltip", title: "", "data-placement" =>"bottom"  do %>
+      <%= link_to root_path, class: "navbar-brand", rel: "tooltip", title: app_title, "data-placement" =>"bottom"  do %>
          <%= app_title %>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,38 +29,51 @@
         <span class="navbar-toggler-bar bar3"></span>
       </button>
     </div>
-    <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">
-      <div class="collapse navbar-collapse" id="example-navbar-primary">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item <%= active_class?(root_path) %>">
-            <%= link_to root_path, class: "nav-link" do %>
-              Home
-            <% end %>
-          </li>
-          <li class="nav-item <%= active_class?(contact_path) %>">
-            <%= link_to contact_path, class: "nav-link" do %>
-              Contact Us
-            <% end %>
-          </li>
-          <li class="nav-item <%= active_class?(about_us_path) %>">
-            <%= link_to about_us_path, class: "nav-link" do %>
-              About Us
-            <% end %>
-          </li>
+    <div class="collapse navbar-collapse" data-nav-image="<%= image_path('blurred-image-1.jpg') %>" data-color="orange">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item <%= active_class?(root_path) %>">
+          <%= link_to root_path, class: "nav-link" do %>
+            Home
+          <% end %>
+        </li>
+        <li class="nav-item <%= active_class?(contact_path) %>">
+          <%= link_to contact_path, class: "nav-link" do %>
+            Contact Us
+          <% end %>
+        </li>
+        <li class="nav-item <%= active_class?(about_us_path) %>">
+          <%= link_to about_us_path, class: "nav-link" do %>
+            About Us
+          <% end %>
+        </li>
+        <% if !user_signed_in? %>
           <li class="nav-item">
-             <% if user_signed_in? %>
-              <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+            <%= link_to new_user_registration_path, class: "nav-link" do %>
+              Sign Up
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item dropdown">
+            <%= link_to "#", class: "nav-link dropdown-toggle", id: "navbarDropdownMenu", "data-toggle" => "dropdown" do %>
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Profile</p>
+            <% end %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to profile_path(current_user), class: "dropdown-item" do %>
+                <i class="now-ui-icons users_circle-08"></i>
+                View Profile
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+                <i class="now-ui-icons ui-1_simple-remove"></i>
                 Logout
               <% end %>
-            <% else %>
-              <%= link_to new_user_registration_path, class: "nav-link" do %>
-                Sign Up
-              <% end %>
-            <% end %>
+            </div>
           </li>
-        </ul>
-        
-        <ul class="nav navbar-nav">
+        <% end %>
+      
+      
+      </ul>
+      <ul class="nav navbar-nav">
           <% if !user_signed_in? %>
             <li class="nav-link">Sign in With:</li>
             <li class="nav-item">
@@ -71,7 +103,6 @@
             </li>
           <% end %>
         </ul>
-      </div>
     </div>
   </div>
 </nav>

@@ -1,0 +1,80 @@
+<%
+ title "#{current_user.name.titleize} - Profile"
+ meta_description "#{app_title} - #{current_user.name.titleize} - Profile"
+ heading "#{current_user.name.titleize} - Profile"
+ pclass "profile-page"
+ heading_desc ""
+%>
+
+<div class="section section-about-us">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 ml-auto mr-auto">
+        <div class="">
+          <% if current_user.image.nil? %>
+            <%= image_tag('replace_me/400x450.jpg') %>
+          <% else %>
+            <%= image_tag current_user.image %>
+          <% end %>
+        </div>
+        <div class="list-group list-group-border-0 g-mb-40">
+          <%= link_to '#overview', class: "list-group-item list-group-item-action justify-content-between active", "data-toggle" => "tab", role: "tablist" do %>
+            <%= icon('fas', 'home') %> Overall
+          <% end %>
+          <%= link_to '#settings', class: "list-group-item list-group-item-action justify-content-between", "data-toggle" => "tab", role: "tablist" do %>
+            <%= icon('fas', 'cogs') %>   Settings
+            <span class="badge badge-success">2</span>
+          <% end %>
+        </div>
+        
+      </div>
+      <div class="col-lg-9">
+        <div class="tab-content">
+          
+          <%= render 'profiles/partials/overview' %>
+
+          <div class="tab-pane" id="settings">
+            <ul class="nav nav-pills mb-3" id="settings-tab" >
+              <li class="nav-item">
+                <%= link_to "#settings-edit", class: "nav-link active", id: "settings-edit-tab", "data-toggle" => "tab", role: "tab", "aria-controls" => "settings-edit", "aria-selected" => "true" do %>
+                  <%= icon('fas', 'cog') %>Edit Profile
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "#settings-security", class: "nav-link", id: "settings-security-tab", "data-toggle" => "tab", role: "tab", "aria-controls" => "settings-security", "aria-selected" => "false" do %>
+                  <%= icon('fas', 'shield-alt') %>Security Settings
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "#settings-payment", class: "nav-link", id: "settings-payment-tab", "data-toggle" => "tab", role: "tab", "aria-controls" => "settings-payments", "aria-selected" => "false" do %>
+                  <%= icon('fas', 'credit-card') %>Payment Options
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "#settings-notifications", class: "nav-link", id: "settings-notifications-tab", "data-toggle" => "tab", role: "tab", "aria-controls" => "settings-notifications", "aria-selected" => "false" do %>
+                  <%= icon('far', 'envelope') %>Notifications Settings
+                <% end %>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <%= render 'profiles/partials/settings_edit' %>
+              <%= render 'profiles/partials/settings_security' %>
+              <%= render 'profiles/partials/settings_payment' %>
+              <%= render 'profiles/partials/settings_notifications' %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$('#settings-tab a').on('click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+  var new_tab = $(e.target).closest("a").attr("href")
+  $(e.target).closest("a").tab("show");
+  //$('#settings-tab a[href="' + new_tab + '"]').tab('show')
+})
+
+</script>

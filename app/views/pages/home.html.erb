@@ -3,163 +3,146 @@
  meta_description app_title
  heading 'This is our great template.'
  pclass "signin-page"
+ heading_desc "Welcome to Rails 5 / Devise template"
 %>
 
-<div class="wrapper">
-  <div class="page-header page-header-small">
-    <div class="page-header-image home_background" data-parallax="true">
-    </div>
-    <div class="content-center">
-      <h1 class="title"><%= yield :heading %></h1>
-      <div class="text-center">
-        <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
-          <%= icon('fab', 'facebook') %>
-        <% end %>
-        <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
-          <%= icon('fab', 'twitter') %>
-        <% end %>
-        <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
-          <%= icon('fab', 'google-plus') %>
-        <% end %>
+
+<div class="section section-about-us">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2 class="title">Template Details</h2>
+        <h5 class="description">
+          Welcome to the base app. To start make sure you first add all the details in .env file.<br>
+          If hosting in docker and not using docker compose make sure you have all the environment varibles set.<br>
+          Next thing to sort out is the secrets file, in the secrets file you have all the api keys required for social logins.<br>
+        </h5>
       </div>
     </div>
-  </div>
-  <div class="section section-about-us">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto text-center">
-          <h2 class="title">Template Details</h2>
-          <h5 class="description">
-            Welcome to the base app. To start make sure you first add all the details in .env file.<br>
-            If hosting in docker and not using docker compose make sure you have all the environment varibles set.<br>
-            Next thing to sort out is the secrets file, in the secrets file you have all the api keys required for social logins.<br>
-          </h5>
-        </div>
-      </div>
-      <div class="separator separator-primary"></div>
-        <div class="section-story-overview">
-          <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-              <h2 class="title">.env File</h2>
-              <pre>
-                <code class="yaml">
-                  COMPOSE_PROJECT_NAME=base_app
-                  COMPANY_NAME=Philip Davies
-                  LOG_LEVEL=debug
-                  WORKER_PROCESSES=1
-                  LISTEN_ON=0.0.0.0:8080
-                  RACK_TIMEOUT_SERVICE_TIMEOUT=30
-                  POSTGRES_USER=rails
-                  POSTGRES_PASSWORD=rails
-                  RAILS_MAX_THREADS=5
-                  DB_HOST=db.local
-                  DB_USER=rails
-                  DB_DATABASE=base_app
-                  DB_PASS=rails
-                  RAILS_ENV=development
-                  SMTP_ADDRESS=smtp.gmail.com
-                  SMTP_PORT=587
-                  SMTP_DOMAIN=gmail.com
-                  SMTP_AUTH=plain
-                  SMTP_ENABLE_STARTTLS_AUTO=true
-                  ACTION_MAILER_HOST=localhost:8080
-                  ACTION_MAILER_DEFAULT_FROM=someone@gmail.com
-                  ACTION_MAILER_DEFAULT_TO=you@gmail.com
-                  REDIS_CACHE_NAMESPACE=cache
-                  ACTIVE_JOB_QUEUE_PREFIX=base-app:jobs
-                  ACTION_CABLE_ALLOWED_REQUEST_ORIGINS=http:\/\/localhost*
-                  CLICKY_SITE_ID=101152957
-                  SKIP_PSQL_AVAILABLE=false 
-                  SKIP_DB_SETUP=true
-                  SKIP_DB_RESET=true
-                  SKIP_DB_SEED=true
-                  SKIP_DB_DEPLOY=false
-                  SKIP_APP_START=false
-                </code>
-              </pre>
-            </div>
+    <div class="separator separator-primary"></div>
+      <div class="section-story-overview">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">.env File</h2>
+            <pre>
+              <code class="yaml">
+                COMPOSE_PROJECT_NAME=base_app
+                COMPANY_NAME=Philip Davies
+                LOG_LEVEL=debug
+                WORKER_PROCESSES=1
+                LISTEN_ON=0.0.0.0:8080
+                RACK_TIMEOUT_SERVICE_TIMEOUT=30
+                POSTGRES_USER=rails
+                POSTGRES_PASSWORD=rails
+                RAILS_MAX_THREADS=5
+                DB_HOST=db.local
+                DB_USER=rails
+                DB_DATABASE=base_app
+                DB_PASS=rails
+                RAILS_ENV=development
+                SMTP_ADDRESS=smtp.gmail.com
+                SMTP_PORT=587
+                SMTP_DOMAIN=gmail.com
+                SMTP_AUTH=plain
+                SMTP_ENABLE_STARTTLS_AUTO=true
+                ACTION_MAILER_HOST=localhost:8080
+                ACTION_MAILER_DEFAULT_FROM=someone@gmail.com
+                ACTION_MAILER_DEFAULT_TO=you@gmail.com
+                REDIS_CACHE_NAMESPACE=cache
+                ACTIVE_JOB_QUEUE_PREFIX=base-app:jobs
+                ACTION_CABLE_ALLOWED_REQUEST_ORIGINS=http:\/\/localhost*
+                CLICKY_SITE_ID=101152957
+                SKIP_PSQL_AVAILABLE=false 
+                SKIP_DB_SETUP=true
+                SKIP_DB_RESET=true
+                SKIP_DB_SEED=true
+                SKIP_DB_DEPLOY=false
+                SKIP_APP_START=false
+              </code>
+            </pre>
           </div>
-          <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-              <h2 class="title">Secrets File</h2>
-              <pre>
-                <code class="yaml">
-                  secret_key_base:
-      
-                  development:
-                    database:
-                      pass: rails
-                    amazon:
-                      client_id:
-                      client_secret:
-                    twitter:
-                      api_key: 
-                      api_secret:
-                    google:
-                      client_id:
-                      client_secret:
-                      recaptcha_site_key:
-                      recaptcha_secret_key:
-                    facebook:
-                      facebook_key:
-                      facebook_secret:
-                    smtp:
-                      username: someone@gmail.com
-                      password: anything
-                    redis:
-                      password: yourpassword
+        </div>
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto">
+            <h2 class="title">Secrets File</h2>
+            <pre>
+              <code class="yaml">
+                secret_key_base:
+    
+                development:
+                  database:
+                    pass: rails
+                  amazon:
+                    client_id:
+                    client_secret:
+                  twitter:
+                    api_key: 
+                    api_secret:
+                  google:
+                    client_id:
+                    client_secret:
+                    recaptcha_site_key:
+                    recaptcha_secret_key:
+                  facebook:
+                    facebook_key:
+                    facebook_secret:
+                  smtp:
+                    username: someone@gmail.com
+                    password: anything
+                  redis:
+                    password: yourpassword
 
 
-                  test:
-                    database:
-                      pass: rails
-                    amazon:
-                      client_id:
-                      client_secret:
-                    twitter:
-                      api_key:
-                      api_secret:
-                    google:
-                      client_id:
-                      client_secret:
-                      recaptcha_site_key:
-                      recaptcha_secret_key:
-                    facebook:
-                      facebook_key:
-                      facebook_secret:
-                    smtp:
-                      username: someone@gmail.com
-                      password: anything
-                    redis:
-                      password: yourpassword
+                test:
+                  database:
+                    pass: rails
+                  amazon:
+                    client_id:
+                    client_secret:
+                  twitter:
+                    api_key:
+                    api_secret:
+                  google:
+                    client_id:
+                    client_secret:
+                    recaptcha_site_key:
+                    recaptcha_secret_key:
+                  facebook:
+                    facebook_key:
+                    facebook_secret:
+                  smtp:
+                    username: someone@gmail.com
+                    password: anything
+                  redis:
+                    password: yourpassword
 
-                  production:
-                    database:
-                      pass: somethingbetterthenthis!!!
-                    amazon:
-                      client_id: 
-                      client_secret:
-                    twitter:
-                      api_key: 
-                      api_secret:
-                    google:
-                      client_id:
-                      client_secret:
-                      recaptcha_site_key:
-                      recaptcha_secret_key:
-                    facebook:
-                      facebook_key:
-                      facebook_secret:
-                    smtp:
-                      username: someone@gmail.com
-                      password: anything
-                    redis:
-                      password: yourpassword
-                </code>
-              </pre>
-            </div>
+                production:
+                  database:
+                    pass: somethingbetterthenthis!!!
+                  amazon:
+                    client_id: 
+                    client_secret:
+                  twitter:
+                    api_key: 
+                    api_secret:
+                  google:
+                    client_id:
+                    client_secret:
+                    recaptcha_site_key:
+                    recaptcha_secret_key:
+                  facebook:
+                    facebook_key:
+                    facebook_secret:
+                  smtp:
+                    username: someone@gmail.com
+                    password: anything
+                  redis:
+                    password: yourpassword
+              </code>
+            </pre>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>

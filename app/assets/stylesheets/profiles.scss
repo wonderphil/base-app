@@ -1,0 +1,48 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.g-py-15 {
+  padding-top: 1.07143rem !important;
+  padding-bottom: 1.07143rem !important;
+}
+
+.g-width-200 {
+  width: 200px !important;
+  display: inline-block!important;
+}
+
+.align-top {
+  vertical-align: top!important;
+}
+
+.g-brd-gray-light-v4 {
+  border-color: #eee !important;
+  border-top-color: rgb(238, 238, 238) !important;
+  border-right-color: rgb(238, 238, 238) !important;
+  border-bottom-color: rgb(238, 238, 238) !important;
+  border-left-color: rgb(238, 238, 238) !important;
+}
+
+.g-brd-bottom {
+  border-bottom-width: 1px !important;
+  border-bottom-style: solid !important;
+}
+
+.g-color-gray-dark-v5 {
+  color: #999 !important;
+}
+
+.g-color-primary--hover:hover {
+  color: #F96332 !important;
+}
+
+.list-group-item.active {
+  background-color: #F96332 !important;
+  border-color: #F96332 !important;
+}

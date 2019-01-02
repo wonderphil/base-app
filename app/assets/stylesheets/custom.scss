@@ -11,9 +11,9 @@
   @extend .alert-danger;
 }
 
-.pm-80 {
-  margin-top: 80px;
-}
+// .pm-80 {
+//   margin-top: 80px;
+// }
 
 .recaptcha_error {
   position: relative;
@@ -35,16 +35,24 @@
   background: image-url('rocky_water_small.jpg');
 }
 
-.contact_background {
+.messages_new_background {
   background: image-url('maps_small.jpg');
 }
 
-.aboutus_background {
+.pages_about_us_background {
   background: image-url('office_space_sm.jpg');
 }
 
-.home_background {
+.pages_home_background {
   background: image-url('office_space_sm.jpg');
+}
+
+.pages_privacy_background {
+  background: image-url('office_space_sm.jpg');
+}
+
+.profiles_show_background {
+  background: image-url('walking_dog_sm.jpg');
 }
 
 .g-recaptcha {

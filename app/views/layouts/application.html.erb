@@ -35,20 +35,28 @@
     <%= render 'layouts/flash' %>
     
     <% if (current_page?(controller: 'devise/sessions', action: 'new') || current_page?(controller:'devise/registrations', action: 'new') ) && !signed_in? %>
-
       <%= yield %>
-      
-    <% elsif signed_in? %>
-      <h1>Sign In</h1>
-    
     <% else %>
-      <%= yield %>
+      <div class="wrapper">
+        <div class="page-header page-header-small">
+          <div class="page-header-image <%= "#{params[:controller]}_#{params[:action]}" %>_background" data-parallax="true">
+          </div>
+          <div class="content-center">
+            <div class="row">
+              <div class="col-md-8 ml-auto mr-auto">
+                <h1 class="title"><%= yield :heading %></h1>
+                <h4><%= yield :heading_desc %></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= yield %>
+      </div>
     <% end %>
-  
+    
   <%= render 'layouts/nav/footer' %>
   
-  <!-- closing div required for footer to be included everywhere -->
-  </div>
+  
   <%= render 'layouts/debug' %>
     
 </body>
