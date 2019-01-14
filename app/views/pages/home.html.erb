@@ -6,43 +6,26 @@
 heading_desc " "
 %>
 
-<div class="wrapper">
-  <div class="page-header page-header-small">
-    <div class="page-header-image home_background" data-parallax="true">
-    </div>
-    <div class="content-center">
-      <h1 class="title"><%= yield :heading %></h1>
-      <div class="text-center">
-        <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
-          <%= icon('fab', 'facebook') %>
-        <% end %>
-        <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
-          <%= icon('fab', 'twitter') %>
-        <% end %>
-        <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
-          <%= icon('fab', 'google-plus') %>
-        <% end %>
+
+<div class="section section-about-us">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto text-center">
+        <h2 class="title">Template Details</h2>
+        <h5 class="description">
+          Welcome to the base app. To start make sure you first add all the details in .env file.<br>
+          If hosting in docker and not using docker compose make sure you have all the environment varibles set.<br>
+          Next thing to sort out is the secrets file, in the secrets file you have all the api keys required for social
+          logins.<br>
+        </h5>
       </div>
     </div>
-  </div>
-  <div class="section section-about-us">
-    <div class="container">
+    <div class="separator separator-primary"></div>
+    <div class="section-story-overview">
       <div class="row">
-        <div class="col-md-8 ml-auto mr-auto text-center">
-          <h2 class="title">Template Details</h2>
-          <h5 class="description">
-            Welcome to the base app. To start make sure you first add all the details in .env file.<br>
-            If hosting in docker and not using docker compose make sure you have all the environment varibles set.<br>
-            Next thing to sort out is the secrets file, in the secrets file you have all the api keys required for social logins.<br>
-          </h5>
-        </div>
-      </div>
-      <div class="separator separator-primary"></div>
-        <div class="section-story-overview">
-          <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-              <h2 class="title">.env File</h2>
-              <pre>
+        <div class="col-md-8 ml-auto mr-auto">
+          <h2 class="title">.env File</h2>
+          <pre>
                 <code class="yaml">
                   COMPOSE_PROJECT_NAME=base_app
                   COMPANY_NAME=Philip Davies
@@ -78,12 +61,12 @@ heading_desc " "
                   SKIP_APP_START=false
                 </code>
               </pre>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-              <h2 class="title">Secrets File</h2>
-              <pre>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <h2 class="title">Secrets File</h2>
+          <pre>
                 <code class="yaml">
                   secret_key_base:
       
@@ -158,9 +141,9 @@ heading_desc " "
                       password: yourpassword
                 </code>
               </pre>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div>

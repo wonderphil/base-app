@@ -52,11 +52,14 @@
                   <h4><%=  (yield :heading_desc).html_safe %></h4>
                   <% if @soical_heading %>
                   <div class='text-center'>
-                    <%= link_to 'https://fb.me/giftme.org', class: 'btn btn-primary btn-icon  btn-round', target: :_blank  do %>
+                    <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
                       <%= icon('fab', 'facebook') %>
                     <% end %>
-                    <%= link_to "https://twitter.com/gift_me_org", class: 'btn btn-primary btn-icon  btn-round', target: :_blank  do %>
+                    <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
                       <%= icon('fab', 'twitter') %>
+                    <% end %>
+                    <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
+                      <%= icon('fab', 'google-plus') %>
                     <% end %>
                   </div>
                   <% end %>

@@ -3,7 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @soical_heading = true
-    @cards = Ecard.all.limit(5)
   end
 
   def about_us

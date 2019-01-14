@@ -1,6 +1,2 @@
 module PagesHelper
-
-  
-  end
-
 end
