@@ -3,16 +3,16 @@
   margin: 25px !important;
 }
 
-.alert-notice {
-  @extend .alert-success;
-}
+// .alert-notice {
+//   @extend .alert-success;
+// }
 
-.alert-alert {
-  @extend .alert-danger;
-}
+// .alert-alert {
+//   @extend .alert-danger;
+// }
 
-.pm-80 {
-  margin-top: 80px;
+.mb-100 {
+  margin-bottom: 100px;
 }
 
 .recaptcha_error {
@@ -35,16 +35,24 @@
   background: image-url('rocky_water_small.jpg');
 }
 
-.contact_background {
+.messages_new_background, .messages_create_background {
   background: image-url('maps_small.jpg');
 }
 
-.aboutus_background {
+.pages_about_us_background {
   background: image-url('office_space_sm.jpg');
 }
 
-.home_background {
-  background: image-url('office_space_sm.jpg');
+.pages_home_background {
+  background: image-url('golden-gift-m.jpg');
+}
+
+.pages_privacy_background {
+  background: image-url('privacy-m.jpg');
+}
+
+.profiles_show_background {
+  background: image-url('walking_dog_sm.jpg');
 }
 
 .g-recaptcha {
@@ -81,4 +89,54 @@
 
 ul.privacy {
   list-style-type: none;
+}
+div.section.section-about-us.bg-colour-why {
+  background-color: #2c2c2c;
+  h2, h3, h5, p{
+    color: white;
+  }
+}
+
+.navbar.navbar-transparent {
+  color: #f96332 !important;
+}
+
+.navbar .navbar-nav .nav-item.active .nav-link:not(.btn),
+.navbar .navbar-nav .nav-item .nav-link:not(.btn):focus,
+.navbar .navbar-nav .nav-item .nav-link:not(.btn):hover,
+.navbar .navbar-nav .nav-item .nav-link:not(.btn):active {
+  background-color:  #f96332 !important;
+  color: white !important;
+}
+
+.navbar.bg-white:not(.navbar-transparent) a:not(.dropdown-item):not(.btn) {
+  color: #f96332 !important;
+}
+
+h2.title.coloured-primary,
+h5.coloured-primary,
+i.fas.fa-angle-left.coloured-primary,
+i.fas.fa-angle-right.coloured-primary,
+i.now-ui-icons.arrows-1_minimal-right.coloured-primary,
+i.now-ui-icons.arrows-1_minimal-left.coloured-primary {
+  color: #f96332 !important;
+}
+
+li.coloured-primary.active {
+  background-color: #f96332 !important;
+}
+
+li.coloured-primary {
+  background-color: #9A9A9A !important;
+}
+
+.carousel {
+  position: unset !important;
+}
+
+.carousel .carousel-inner {
+  box-shadow: unset !important;
+}
+.mt-100 {
+  margin-top: 100px;
 }

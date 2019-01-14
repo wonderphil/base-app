@@ -13,7 +13,7 @@ then
 else
   echo "Checking if Postgres is alive:"
 
-  until PGPASSWORD="$DB_PASS" psql -h "$DB_HOST" -U "$DB_USER" -c '\q'; do
+  until PGPASSWORD="$DB_PASS" psql -h "$DB_HOST" -U "$DB_USER" -d "$DB" -c '\q'; do
     >&2 echo "Postgres is unavailable - sleeping"
     sleep 5
   done
@@ -62,11 +62,20 @@ else
   rake db:migrate
 fi
 
+if [ "$SKIP_ASSET_COMPLIE" = "true" ]
+then
+  echo "SKIPPING ASSET PRE-COMPILE"
+else
+  echo "RUNNING ASSET PRE-COMPILE"
+  bundle exec rake RAILS_ENV=production DATABASE_URL=postgresql://user:pass@127.0.0.1/dbname SECRET_TOKEN=pickasecuretoken assets:precompile
+fi
+
 if [ "$SKIP_APP_START" = "true" ]
 then
   echo "NOT STARTING APP"
 else
   #bundle exec rake assets:precompile
+  
   echo "Now starting unicorn!"
   bundle exec unicorn -c config/unicorn.rb
 fi

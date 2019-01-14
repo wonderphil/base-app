@@ -26,13 +26,11 @@ gem 'sidekiq', '~> 5.1'                     # Use Sidekiq as a background job pr
 gem 'sass-rails', '~> 5.0'                  # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'                  # Use Uglifier as compressor for JavaScript assets
 gem 'jbuilder', '~> 2.5'                    # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'turbolinks', '~> 5'                    # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'bootstrap', '~> 4.1.3'
 gem 'jasny-bootstrap-rails'                 # Jasny Bootstrap extension can be found here: http://jasny.github.io/bootstrap/
 gem 'momentjs-rails'                        # Moment.js is "a lightweight javascript date library for parsing, manipulating, and formatting dates."
 gem 'nouislider-rails'                      # noUiSlider: lightweight JavaScript range slider with full touch support
 gem 'font-awesome-sass', '~> 5.5.0'
-# gem 'mini_racer', platforms: :ruby          # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery-rails'
 # gem 'jquery-migrate-rails'
 # gem 'will_paginate',           '3.1.5'
@@ -43,6 +41,8 @@ gem 'jquery-rails'
 # gem "wysiwyg-rails"                           # Turns Text area into rich text editor
 # gem 'toastr-rails'                    # Javascript library for Gnome / Growl type non-blocking notifications
 gem 'rails-highlightjs'                 # Javascript library for code syntax highlighting
+# gem 'rest-client'                           # Make calling api's easy
+gem 'valid_url'                             # Accurate and reliable rails url validator
 
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'           # Image Processor
@@ -87,6 +87,7 @@ group :development do
   gem 'rails-erd'                             # creates database diagrams
   gem "lol_dba"                               # Find missing indexs
   gem 'rack-mini-profiler', '~> 1.0'          # Enable a debug toolbar to help profile your application
+  gem 'rename'                                # Rename any Rails Application
 end
 
 group :test do

@@ -1,7 +1,7 @@
 class Message
   include ActiveModel::Model
 
-  attr_accessor :name, :email, :phone, :message
+  attr_accessor :name, :email, :phone, :message, :speciality
 
   validates :name, presence: true
   validates_presence_of :message, :length => { 
@@ -10,7 +10,7 @@ class Message
     :too_long  => "Please limit your message to %{count} words"
   }
   
-  validates :email, 'valid_email_2/email': { disposable: true, mx: true }
+  validates :email, presence: true, 'valid_email_2/email': { disposable: true, mx: true }
   
   
 end

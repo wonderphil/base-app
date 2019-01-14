@@ -3,21 +3,10 @@
  meta_description "About Us - #{app_title}"
  heading "About Us!"
  pclass "signin-page"
+ heading_desc "Meet the amazing team behind this project and find out more about how we work."
 %>
 
-<div class="wrapper">
-  <div class="page-header page-header-small">
-    <div class="page-header-image aboutus_background" data-parallax="true">
-    </div>
-    <div class="content-center">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto">
-          <h1 class="title">About Us</h1>
-          <h4>Meet the amazing team behind this project and find out more about how we work.</h4>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 <div class="section">
   <div class="about-description text-center">
@@ -26,7 +15,8 @@
         <div class="row">
           <div class="col-md-8 mr-auto ml-auto">
             <h2 class="title">Simpler. Smarter. Faster.</h2>
-            <h4 class="description">The CloudCheckr Cloud Management Platform (CMP) provides full visibility and control to reduce costs, improve cybersecurity posture, and automate critical tasks.</h4>
+            <h4 class="description">We are a tech company at heart and we do want we do because we want to make life
+              easier and better for everyone.</h4>
           </div>
         </div>
         <div class="row">
@@ -68,7 +58,8 @@
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto text-center">
           <h2 class="title">We are nerd rockstars</h2>
-          <h4 class="description">This is the paragraph where you can write more details about your team. Keep you user engaged by providing meaningful information.</h4>
+          <h4 class="description">Techies at heart, out to change the world and making life just that little bit easier
+            at each step.</h4>
         </div>
       </div>
       <div class="row">
@@ -132,44 +123,46 @@
       <div class="row">
         <div class="col-md-8 mr-auto ml-auto">
           <h2 class="text-center title">Want to work with us?</h2>
-          <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will get back to you in a couple of hours.</h4>
+          <h4 class="text-center description">We are always on the look out for people that stand above the rest, who
+            don't mind a start-up culture but also want to do things the right way.</h4>
           <%= form_for @job, url: about_us_url, id: "contact-form" do |f| %>
-            <%= form_errors_for @job %>
-            <div class="row">
-              <div class="col-md-4">
-                <%= f.label :name, "Your Name" %>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
-                  </div>
-                  <%= f.text_field :name, autocomplete: "name", class: "form-control", placeholder: "Your Name...." %>
+          <%= form_errors_for @job %>
+          <%= f.hidden_field :phone, value: '00000' %>
+          <div class="row">
+            <div class="col-md-4">
+              <%= f.label :name, "Your Name" %>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons users_circle-08"></i></span>
                 </div>
+                <%= f.text_field :name, autocomplete: "name", class: "form-control", placeholder: "Your Name...." %>
               </div>
-              <div class="col-md-4">
-                <%= f.label :email, "Your Email" %>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
-                  </div>
-                  <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Your Email...." %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :email, "Your Email" %>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
                 </div>
+                <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Your Email...." %>
               </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <%= f.label :speciality, "Speciality", class: "control-label" %>
-                    <%= f.select(:speciality, ["I'm a Designer", "I'm a Developer", "I'm a Hero"], {}, {class: "selectpicker", "data-size" => "7", "data-style" => "btn btn-default btn-round mt-0", title: "Speciality"} ) %>
-                    
-                  </div>
-                </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <%= f.label :speciality, "Speciality", class: "control-label" %>
+                <%= f.select(:speciality, ["I'm a Designer", "I'm a Developer", "I'm a Hero"], {}, {class: "selectpicker", "data-size" => "7", "data-style" => "btn btn-default btn-round mt-0", title: "Speciality"} ) %>
+
               </div>
-              <div class="row">
-                <div class="col-md-4 ml-auto mr-auto text-center">
-                  <%= f.submit "Let's Talk", class: "btn btn-primary btn-round mt-4 btn-lg" %>
-                </div>
-              </div>
-            <% end %>
+            </div>
           </div>
+          <div class="row">
+            <div class="col-md-4 ml-auto mr-auto text-center">
+              <%= f.submit "Let's Talk", class: "btn btn-primary btn-round mt-4 btn-lg" %>
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>

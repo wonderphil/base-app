@@ -1,7 +1,26 @@
-<nav class="navbar navbar-expand-lg bg-white fixed-top">
+<nav class="navbar navbar-expand-lg bg-white fixed-top navbar-transparent" color-on-scroll="500">
   <div class="container">
+    <!-- Add drop down menu to logo of nav bar
+      <div class="dropdown button-dropdown">
+        <a href="#pablo" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">
+          <span class="button-bar"></span>
+          <span class="button-bar"></span>
+          <span class="button-bar"></span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-header">Dropdown header</a>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">One more separated link</a>
+        </div>
+      </div>
+    -->
     <div class="navbar-translate">
-      <%= link_to root_path, class: "navbar-brand", rel: "tooltip", title: "", "data-placement" =>"bottom"  do %>
+      <%= link_to root_path, class: "navbar-brand", rel: "tooltip", title: app_title, "data-placement" =>"bottom"  do %>
          <%= app_title %>
       <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,9 +29,8 @@
         <span class="navbar-toggler-bar bar3"></span>
       </button>
     </div>
-    <div class="collapse navbar-collapse" data-nav-image="../assets/img/blurred-image-1.jpg" data-color="orange">
-      <div class="collapse navbar-collapse" id="example-navbar-primary">
-        <ul class="navbar-nav mx-auto">
+    <div class="collapse navbar-collapse" data-nav-image="<%= image_path('blurred-image-1.jpg') %>" data-color="orange">
+      <ul class="navbar-nav ml-auto">
           <li class="nav-item <%= active_class?(root_path) %>">
             <%= link_to root_path, class: "nav-link" do %>
               Home
