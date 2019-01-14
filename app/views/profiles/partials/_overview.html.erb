@@ -1,4 +1,4 @@
-<div class="tab-pane active show" id="overview">
+
   <h2 class="h4 g-font-weight-300">Overview of your Profile</h2>
   <p>Below are details we have on file for your account.</p>
 
@@ -8,9 +8,6 @@
         <strong class="g-width-200">Name</strong>
         <span class="align-top"><%= current_user.name.titleize %></span>
       </div>
-      <span>
-        <%= icon('fas', 'pen', class: "g-color-gray-dark-v5 g-color-primary--hover") %>
-      </span>
     </li>
 
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
@@ -18,9 +15,6 @@
         <strong class="g-width-200">Email</strong>
         <span class="align-top"><%= current_user.email.downcase %></span>
       </div>
-      <span>
-        <%= icon('fas', 'pen', class: "g-color-gray-dark-v5 g-color-primary--hover") %>
-      </span>
     </li>
 
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
@@ -28,9 +22,6 @@
         <strong class="g-width-200">Localation</strong>
         <span class="align-top"><%= current_user.location %></span>
       </div>
-      <span>
-        <%= icon('fas', 'pen', class: "g-color-gray-dark-v5 g-color-primary--hover") %>
-      </span>
     </li>
 
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
@@ -50,7 +41,13 @@
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
       <div class="">
         <strong class="g-width-200">Account Confirmed On</strong>
-        <span class="align-top"><%= current_user.confirmed_at %></span>
+        <span class="align-top">
+          <% if current_user.confirmed_at.nil? %>
+            Account is pending (Account will automatically expirer at <%= current_user.confirmation_sent_at + 2.hours %>)
+          <% else %>
+            <%= current_user.confirmed_at %>
+          <% end %>
+        </span>
       </div>
     </li>
 
@@ -63,4 +60,3 @@
 
 
   </ul>
-</div>

@@ -73,12 +73,43 @@
               </div>
               <div class="pull-right">
                 <h6>
-                  <%= link_to "Need Help?", "#", class: "link footer-link" %>
+                  <%= link_to "Need Help?", "#", class: "link footer-link", "data-toggle" => "modal", "data-target" => "#need_help_modal" %>
                 </h6>
               </div>
             <% end %>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="need_help_modal" tabindex="-1" role="dialog" aria-labelledby="need_help_modal_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="now-ui-icons ui-1_simple-remove"></i>
+        </button>
+        <h4 class="title title-up">Having issues signing in or signing up?</h4>
+      </div>
+      <div class="modal-body">
+        
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+          <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+        <% end -%>
+
+        <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+          <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+        <% end -%>
+
+        <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+          <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+        <% end -%>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

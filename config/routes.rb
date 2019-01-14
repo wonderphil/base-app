@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post  'about_us',         to: 'pages#create_job'
   get   'privacy',          to: 'pages#privacy'
   
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", registrations: 'users/registrations' }
 
   resources :profiles,  only: [:show, :update ]
   

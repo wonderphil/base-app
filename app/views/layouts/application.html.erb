@@ -1,12 +1,15 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <title><%= yield :title %></title>
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' />
+  <title>
+    <%= yield :title %>
+  </title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' />
   <meta name="author" content="Philip Davies - SonicTexture.co.uk">
-  <meta name="description" content="<%= yield :meta_description %>"/>
+  <meta name="description" content="<%= yield :meta_description %>" />
 
   <%= action_cable_meta_tag %>
 
@@ -26,57 +29,56 @@
   <![endif]-->
 </head>
 
-  <body class="<%= yield :pclass %>">
-      
-    <%= render 'layouts/nav/header'%>
-    
-    <%= render 'layouts/google_analytics' %>
-    <%= render 'layouts/hotjar' %>
-    
-    
-    
-    <% if (current_page?(controller: 'devise/sessions', action: 'new') || current_page?(controller:'devise/registrations', action: 'new') ) && !signed_in? %>
+<body class="<%= yield :pclass %>">
+
+  <%= render 'layouts/nav/header'%>
+  <%= render 'layouts/google_analytics' %>
+  <%= render 'layouts/hotjar' %>
+
+  <% if (current_page?(controller: 'devise/sessions', action: 'new') || current_page?(controller:'users/registrations', action: 'new') ) && !signed_in? %>
+    <div class="wrapper">
+      <%= render 'layouts/flash' %>
       <%= yield %>
-      
-    <% else %>
-        <div class="wrapper">
-            
-          <div class="page-header page-header-small">
-            <div class="page-header-image <%= "#{params[:controller]}_#{params[:action]}" %>_background" data-parallax="true">
-            </div>
-            <div class="content-center">
-              <div class="row">
-                <div class="col-md-8 ml-auto mr-auto">
-                  <h1 class="title"><%= yield :heading %></h1>
-                  <h4><%=  (yield :heading_desc).html_safe %></h4>
-                  <% if @soical_heading %>
-                  <div class='text-center'>
-                    <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
-                      <%= icon('fab', 'facebook') %>
-                    <% end %>
-                    <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
-                      <%= icon('fab', 'twitter') %>
-                    <% end %>
-                    <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
-                      <%= icon('fab', 'google-plus') %>
-                    <% end %>
-                  </div>
-                  <% end %>
-                </div>
+    </div>
+    
+  <% else %>
+    <div class="wrapper">
+      <div class="page-header page-header-small">
+        <div class="page-header-image <%= " #{params[:controller]}_#{params[:action]}" %>_background"
+          data-parallax="true">
+        </div>
+        <div class="content-center">
+          <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+              <h1 class="title">
+                <%= yield :heading %>
+              </h1>
+              <h4>
+                <%=  (yield :heading_desc).html_safe %>
+              </h4>
+              <% if @soical_heading %>
+              <div class='text-center'>
+                <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
+                <%= icon('fab', 'facebook') %>
+                <% end %>
+                <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
+                <%= icon('fab', 'twitter') %>
+                <% end %>
+                <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
+                <%= icon('fab', 'google-plus') %>
+                <% end %>
               </div>
+              <% end %>
             </div>
           </div>
-          <%= render 'layouts/flash' %>
-        <%= yield %>
+        </div>
       </div>
-    <% end %>
-    
+      <%= render 'layouts/flash' %>
+      <%= yield %>
+    </div>
+  <% end %>
   <%= render 'layouts/nav/footer' %>
-  
-  
   <%= render 'layouts/debug' %>
-    
 </body>
-  <script>hljs.initHighlightingOnLoad();</script>
-
+<script>hljs.initHighlightingOnLoad();</script>
 </html>
