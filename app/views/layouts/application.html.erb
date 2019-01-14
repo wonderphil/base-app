@@ -31,25 +31,42 @@
     <%= render 'layouts/nav/header'%>
     
     <%= render 'layouts/google_analytics' %>
+    <%= render 'layouts/hotjar' %>
     
-    <%= render 'layouts/flash' %>
+    
     
     <% if (current_page?(controller: 'devise/sessions', action: 'new') || current_page?(controller:'devise/registrations', action: 'new') ) && !signed_in? %>
       <%= yield %>
+      
     <% else %>
-      <div class="wrapper">
-        <div class="page-header page-header-small">
-          <div class="page-header-image <%= "#{params[:controller]}_#{params[:action]}" %>_background" data-parallax="true">
-          </div>
-          <div class="content-center">
-            <div class="row">
-              <div class="col-md-8 ml-auto mr-auto">
-                <h1 class="title"><%= yield :heading %></h1>
-                <h4><%= yield :heading_desc %></h4>
+        <div class="wrapper">
+            
+          <div class="page-header page-header-small">
+            <div class="page-header-image <%= "#{params[:controller]}_#{params[:action]}" %>_background" data-parallax="true">
+            </div>
+            <div class="content-center">
+              <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                  <h1 class="title"><%= yield :heading %></h1>
+                  <h4><%=  (yield :heading_desc).html_safe %></h4>
+                  <% if @soical_heading %>
+                  <div class='text-center'>
+                    <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
+                      <%= icon('fab', 'facebook') %>
+                    <% end %>
+                    <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
+                      <%= icon('fab', 'twitter') %>
+                    <% end %>
+                    <%= link_to "#", class: "btn btn-primary btn-icon  btn-round" do %>
+                      <%= icon('fab', 'google-plus') %>
+                    <% end %>
+                  </div>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          <%= render 'layouts/flash' %>
         <%= yield %>
       </div>
     <% end %>

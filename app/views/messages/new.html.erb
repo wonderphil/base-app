@@ -1,7 +1,7 @@
 <%
  title "#{app_title} - Contact Us"
  meta_description "Contact Us - #{app_title}"
- heading "Conact Us"
+ heading "Contact Us"
  pclass "contact-page"
  heading_desc ""
 %>
@@ -22,6 +22,7 @@
           <%= form_for @message, url: contact_url, id: "contact-form" do |f| %>
             <%= form_errors_for @message %>
 
+            <%= f.hidden_field :speciality, value: 'none' %>
             <%= f.label :name %>
             <div class="input-group">
               <div class="input-group-prepend">
@@ -58,13 +59,13 @@
         </div>
         <div class="col-md-5 ml-auto mr-auto">
           <div class="info info-horizontal mt-5">
-            <% if ENV['COMPANY_ADDRESS_1'] %>
+            <% if !@address.nil? %>
               <div class="icon icon-primary">
                 <i class="now-ui-icons location_pin"></i>
               </div>
               <div class="description">
                 <h4 class="info-title">Find us at the office</h4>
-                <p><%= company_address.html_safe %>
+                <p><%= @address.html_safe %>
                 </p>
               </div>
             <% end %>
@@ -75,7 +76,7 @@
                 <i class="now-ui-icons tech_mobile"></i>
               </div>
               <div class="description">
-                <h4 class="info-title">Give us a ring</h4>
+                <h4 class="info-title">Contact Support</h4>
                 <p> <%= ENV['COMPANY_CONTACT_PERSON'] %>
                   <br><%= ENV['COMPANY_CONTACT_PHONE'] %>
                   <br><%= ENV['COMPANY_CONTACT_HOURS'] %>
@@ -91,10 +92,10 @@
               <div class="description">
                 <h4 class="info-title">Legal Information</h4>
                 <p> <%= ENV['COMPANY_NAME'] %>.
-                  <br><%= ENV['COMPANY_LEGAL_1'].html_safe %>
-                  <br><%= ENV['COMPANY_LEGAL_2'].html_safe %>
-                  <br><%= ENV['COMPANY_LEGAL_3'].html_safe %>
-                  <br><%= ENV['COMPANY_LEGAL_4'].html_safe %>
+                  <br><%= ENV['COMPANY_LEGAL_1'] %>
+                  <br><%= ENV['COMPANY_LEGAL_2'] %>
+                  <br><%= ENV['COMPANY_LEGAL_3'] %>
+                  <br><%= ENV['COMPANY_LEGAL_4'] %>
                 </p>
               </div>
             <% end %>

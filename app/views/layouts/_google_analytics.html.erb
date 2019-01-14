@@ -6,10 +6,15 @@
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
   // Enable 'Demographics and interest reports' in your analytics settings
-  // ga('require', 'displayfeatures');
+  ga('require', 'displayfeatures');
 
   // Enable 'Use enhanced link attribution' in your analytics settings
-  // ga('require', 'linkid', 'linkid.js');
+  ga('require', 'linkid', 'linkid.js');
+
+  <% if !@current_user.nil? %>
+    ga('set', 'userId', '<%= current_user.id %>');
+  <% end %>
+
 
   ga('create', '<%= ENV["GOOGLE_ANALYTICS_UA"] %>', 'auto');
   ga('send', 'pageview');

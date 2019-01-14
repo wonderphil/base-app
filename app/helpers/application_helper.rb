@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def heading_desc(page_heading_desc)
-    content_for(:heading_desc) { page_heading_desc }
+     content_for(:heading_desc) { raw(page_heading_desc) }
   end
 
   def pclass(page_pclass)
@@ -22,6 +22,11 @@ module ApplicationHelper
 
   def app_title
     ENV['COMPOSE_PROJECT_NAME'].sub('_', ' ').titleize
+  end
+
+  def logins_enabled?
+    if ENV['ENABLE_LOGINS']
+    end
   end
 
   def humanize_boolean(input)
@@ -48,9 +53,7 @@ module ApplicationHelper
   end
   
   def form_errors_for(object=nil)
-    puts object
-    puts "ppppppppppppp"
     render('shared/form_errors', object: object) unless object.blank?
   end
-  
+
 end

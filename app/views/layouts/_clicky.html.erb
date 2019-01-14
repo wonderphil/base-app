@@ -1,9 +1,2 @@
-<a title="Real Time Web Analytics" href="http://clicky.com/<%= ENV["CLICKY_SITE_ID"] %>"><img alt="Real Time Web Analytics" src="//static.getclicky.com/media/links/badge.gif" border="0" /></a>
-<script src="//static.getclicky.com/js" type="text/javascript"></script>
-<script type="text/javascript">
-//try{ clicky.init(<%= ENV["CLICKY_SITE_ID"] %>); }catch(e){}
-//$(document).on 'page:change', ->
-//  if window.clicky?
-//    clicky.log( document.location.pathname + document.location.search, document.title, 'pageview' );
-</script>
-<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/<%= ENV["CLICKY_SITE_ID"] %>ns.gif" /></p></noscript>
+<script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(<%= ENV['CLICKY_SITE_ID'] %>);</script>
+<script async src="//static.getclicky.com/js"></script>

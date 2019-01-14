@@ -1,5 +1,8 @@
 class PagesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create_job, raise: false
+
   def home
+    @soical_heading = true
   end
 
   def about_us
@@ -24,6 +27,6 @@ class PagesController < ApplicationController
 
 private
   def job_params
-    params.require(:job).permit(:name, :email, :speciality)
+    params.require(:job).permit(:name, :email, :speciality, :phone)
   end
 end
