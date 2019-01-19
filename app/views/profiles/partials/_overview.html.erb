@@ -6,35 +6,35 @@
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
       <div class="">
         <strong class="g-width-200">Name</strong>
-        <span class="align-top"><%= current_user.name.titleize %></span>
+        <span class="align-top"><%= @user.name.titleize %></span>
       </div>
     </li>
 
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
       <div class="">
         <strong class="g-width-200">Email</strong>
-        <span class="align-top"><%= current_user.email.downcase %></span>
+        <span class="align-top"><%= @user.email.downcase %></span>
       </div>
     </li>
 
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
       <div class="">
         <strong class="g-width-200">Localation</strong>
-        <span class="align-top"><%= current_user.location %></span>
+        <span class="align-top"><%= @user.location %></span>
       </div>
     </li>
 
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
       <div class="">
         <strong class="g-width-200">Account Type</strong>
-        <span class="align-top"><%= current_user.provider.titleize %></span>
+        <span class="align-top"><%= @user.provider.titleize %></span>
       </div>
     </li>
 
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
       <div class="">
         <strong class="g-width-200">Account ID</strong>
-        <span class="align-top"><%= current_user.id %></span>
+        <span class="align-top"><%= @user.id %></span>
       </div>
     </li>
 
@@ -42,10 +42,10 @@
       <div class="">
         <strong class="g-width-200">Account Confirmed On</strong>
         <span class="align-top">
-          <% if current_user.confirmed_at.nil? %>
-            Account is pending (Account will automatically expirer at <%= current_user.confirmation_sent_at + 2.hours %>)
+          <% if @user.confirmed_at.nil? %>
+            Account is pending (Account will automatically expirer at <%= (@user.confirmation_sent_at + 2.hours).in_time_zone(@user.tz) %>)
           <% else %>
-            <%= current_user.confirmed_at %>
+            <%= @user.confirmed_at.in_time_zone(@user.tz) %>
           <% end %>
         </span>
       </div>
@@ -54,7 +54,7 @@
     <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
       <div class="">
         <strong class="g-width-200">Account Created On</strong>
-        <span class="align-top"><%= current_user.created_at %></span>
+        <span class="align-top"><%= @user.created_at.in_time_zone(@user.tz) %></span>
       </div>
     </li>
 

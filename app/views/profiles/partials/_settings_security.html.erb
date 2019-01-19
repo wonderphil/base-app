@@ -1,2 +1,30 @@
-  <h2 class="h4 g-font-weight-300">Overview of your Security Settings</h2>
-  <p>Security.</p>
+<h2 class="h4 g-font-weight-300">Overview of your Security Settings</h2>
+
+<!-- Security Settings -->
+<div>
+  <p class="g-mb-25">Update Password</p>
+  
+  <%= form_for :user, namespace: 'security', method: "patch" do |f| %>
+
+    <div class="form-group row g-mb-25">
+      <%= f.label :password, "New Password", class: "col-sm-3 col-form-label text-sm-right" %>
+      <div class="col-sm-9">
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "New password..." %>
+      </div>
+    </div>
+
+    <div class="form-group row g-mb-25">
+      <%= f.label :password_confirmation, "Confirm Password", class: "col-sm-3 col-form-label text-sm-right" %>
+      <div class="col-sm-9">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm Password..." %>
+      </div>
+    </div>
+
+    <hr class="g-brd-gray-light-v4 g-my-25">
+
+    <div class="text-sm-right">
+      <%= f.submit "Update", class: "btn btn-primary btn-round btn-lg" %>
+    </div>
+  <% end %>
+</div>
+<!-- End Security Settings -->

@@ -44,7 +44,7 @@
 }
 
 .pages_home_background {
-  background: image-url('golden-gift-m.jpg');
+  background: image-url('rails-m.jpg');
 }
 
 .pages_privacy_background {
@@ -55,7 +55,7 @@
   background: image-url('walking_dog_sm.jpg');
 }
 
-.profiles_show_background {
+.profiles_update_background {
   background: image-url('walking_dog_sm.jpg');
 }
 
@@ -75,12 +75,22 @@
   height: calc(2.25rem + 10px);
 }
 
-.login-page .page-header > .content {
-  margin-top: 5% !important;
+.login-page .content .row .container .col-md-5.ml-auto.mr-auto.form-box {
+  background-color: rgba(0,0,0,0.8);
+  border-radius: 10px;  
 }
+
 
 .signup-page .page-header > .content {
   margin-top: 5% !important;
+}
+
+.signup-page .page-header.section-image:after {
+  background-color: unset !important;
+}
+
+.alert.alert-recaptcha_error {
+  display: none !important;
 }
 
 .pull-right {
@@ -147,4 +157,37 @@ li.coloured-primary {
 
 li.nav-link.nav-link-white {
   color: white;
+}
+
+.page-header{
+  .alert.alert-alert,
+  .alert.alert-notice,
+  .alert.alert-warning,
+  .alert.alert-success,
+  .alert.alert-info,
+  .alert.alert-danger {
+    margin-top: 60px !important;
+  }
+
+  & > .content{
+      margin-top: 150px !important;
+  }
+
+  &:before{
+      background-color: unset !important;
+  }
+
+  
+}
+
+#error_explanation {
+  color: #f96332;
+}
+
+.alert.alert-alert a {
+  color: #30363E;
+}
+
+.field_with_errors {
+  @extend .has-error;
 }

@@ -75,7 +75,11 @@
       </ul>
       <ul class="nav navbar-nav">
           <% if !user_signed_in? %>
-            <li class="nav-link nav-link-white">Sign in With:</li>
+            <li class="nav-item">
+              <%=link_to new_user_session_path, class: "nav-link" do %>
+                Sign in With:
+              <% end %>
+            </li>
             <li class="nav-item">
               <%= link_to user_twitter_omniauth_authorize_path, class: "nav-link" do %>
                 <%= icon('fab', 'twitter') %>

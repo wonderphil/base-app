@@ -2,4 +2,6 @@
 
 <p>You can confirm your account email through the link below:</p>
 
+<p>By confirming account you also agree to the terms and conditions and privacy policy that are set out at <%= link_to "here", privacy_url %>
+
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>

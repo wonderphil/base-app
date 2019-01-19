@@ -1,0 +1,96 @@
+<h2 class="h4 g-font-weight-300">Overview of your Activity</h2>
+<ul class="list-unstyled">
+  <li class="d-flex justify-content-between g-brd-bottom g-py-30 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300">Sign in Count</strong>
+      <span class="align-top">
+        <%= @user.sign_in_count %></span>
+    </div>
+  </li>
+
+  <%# <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300 <%= "hightlight-red" if @user.failed_attempts > 5 >">Failed Sign in Count</strong>
+      <span class="align-top">
+        <%= @user.failed_attempts ></span>
+    </div>
+  </li> #%>
+
+  <%# <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300">When Account was Locked Last</strong>
+      <span class="align-top">
+        <%= @user.locked_at.in_time_zone(@user.tz) unless @user.locked_at.nil? ></span>
+    </div>
+  </li> #%>
+
+  <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300">Current Session start time</strong>
+      <span class="align-top">
+        <%= @user.current_sign_in_at.in_time_zone(@user.tz) %></span>
+    </div>
+  </li>
+
+  <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300">Current Session IP</strong>
+      <span class="align-top">
+        <%= @user.current_sign_in_ip %></span>
+    </div>
+  </li>
+
+  <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300">Last time Sign In</strong>
+      <span class="align-top">
+        <%= @user.last_sign_in_at.in_time_zone(@user.tz) %></span>
+    </div>
+  </li>
+
+  <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300">Last time Sign In IP Address</strong>
+      <span class="align-top">
+        <%= @user.last_sign_in_ip %></span>
+    </div>
+  </li>
+
+  <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300">Account Confirmed On</strong>
+      <span class="align-top">
+        <% if @user.confirmed_at.nil? %>
+          Account is pending (Account will automatically expirer at
+          <%= (@user.confirmation_sent_at + 2.hours).in_time_zone(@user.tz) %>)
+        <% else %>
+          <%= @user.confirmed_at.in_time_zone(@user.tz) %>
+        <% end %>
+      </span>
+    </div>
+  </li>
+
+  <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300">Confirmation Email Sent At</strong>
+      <span class="align-top">
+        <%= @user.confirmation_sent_at.in_time_zone(@user.tz) unless @user.confirmation_sent_at.nil? %></span>
+    </div>
+  </li>
+
+  <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
+    <div class="">
+      <strong class="g-width-300">Account Created On</strong>
+      <span class="align-top">
+        <%= @user.created_at.in_time_zone(@user.tz) %></span>
+    </div>
+  </li>
+
+
+</ul>
+<h2 class="h4 g-font-weight-300">Last ten times password was changed</h2>
+<ul class="list-unstyled">
+  <% @user.old_passwords.each do |pass| %>
+    <li><%= pass.created_at.in_time_zone(@user.tz) %></li>
+  <% end %>
+</ul>

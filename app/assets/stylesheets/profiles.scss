@@ -17,6 +17,11 @@
   display: inline-block!important;
 }
 
+.g-width-300 {
+  width: 300px !important;
+  display: inline-block!important;
+}
+
 .align-top {
   vertical-align: top!important;
 }
@@ -45,4 +50,8 @@
 .list-group-item.active {
   background-color: #F96332 !important;
   border-color: #F96332 !important;
+}
+
+.hightlight-red {
+  background-color: red;
 }

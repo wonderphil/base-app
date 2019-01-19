@@ -37,7 +37,7 @@ Devise.setup do |config|
   config.captcha_for_unlock = true
 
   # captcha integration for confirmation form
-  # config.captcha_for_confirmation = true
+  config.captcha_for_confirmation = true
 
   # Time period for account expiry from last_activity_at
   config.expire_after = 365.days

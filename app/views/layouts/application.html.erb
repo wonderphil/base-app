@@ -35,17 +35,12 @@
   <%= render 'layouts/google_analytics' %>
   <%= render 'layouts/hotjar' %>
 
-  <% if (current_page?(controller: 'devise/sessions', action: 'new') || current_page?(controller:'users/registrations', action: 'new') ) && !signed_in? %>
-    <div class="wrapper">
-      <%= render 'layouts/flash' %>
-      <%= yield %>
-    </div>
-    
+  <% if ( ["sessions", "registrations", "confirmations", "unlocks", "passwords"].include? controller_name ) && !signed_in? %>
+    <%= yield %>
   <% else %>
     <div class="wrapper">
       <div class="page-header page-header-small">
-        <div class="page-header-image <%= " #{params[:controller]}_#{params[:action]}" %>_background"
-          data-parallax="true">
+        <div class="page-header-image <%= " #{params[:controller]}_#{params[:action]}" %>_background" data-parallax="true">
         </div>
         <div class="content-center">
           <div class="row">
@@ -73,7 +68,7 @@
           </div>
         </div>
       </div>
-      <%= render 'layouts/flash' %>
+      <%= render 'shared/flash' %>
       <%= yield %>
     </div>
   <% end %>

@@ -1,29 +1,76 @@
-<h2>Change your password</h2>
+<%
+ title "#{app_title} - Change Password?"
+ meta_description app_title
+ heading "Change Password #{app_title}"
+ pclass "login-page"
+%>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<div class="wrapper">
+  <div class="page-header">
+    <div class="page-header-image signin_background">
+      <div class="content-center">
+        <div class="row">
+          <div class="container">
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+          </div>
+        </div>
+      </div>
+    </div>
+      <%= render 'shared/flash' %>
+      <div class="content">
+        <div class="row">
+          <div class="container">
+            <div class="col-md-5 ml-auto mr-auto form-box">
+              <div class="card card-login card-plain">
+                <h4 class="card-title ">Change Your Password</h4>
+
+                <div class="card-body">
+                  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+                    <%= devise_error_messages! %>
+                    <%= f.hidden_field :reset_password_token %>
+                  
+                    <div class="input-group form-group-no-border input-lg">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><%= icon('fas', 'unlock')%></span>
+                      </div>
+                      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "New Password..." %>
+                    </div>
+
+                    <div class="input-group form-group-no-border input-lg">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><%= icon('fas', 'lock')%></span>
+                      </div>
+                      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm new password..." %>
+                    </div>
+
+                    <div class="input-group recaptcha">
+                      <%= recaptcha_tags %>
+                    </div>
+
+                    <div class="card-footer text-center">
+                      <%= f.submit "Change Password", class: "btn btn-primary btn-round btn-lg" %>
+                    </div>
+                    <div class="pull-left">
+                      <h6>
+                        <%= link_to "Create Account", new_user_registration_path, class: "link footer-link" %>
+                      </h6>
+                    </div>
+                    <div class="pull-right">
+                      <h6>
+                        <%= link_to "Need Help?", "#", class: "link footer-link", "data-toggle" => "modal", "data-target" => "#need_help_modal" %>
+                      </h6>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= recaptcha_tags %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<%= render 'devise/shared/modal_links' %>

@@ -1,7 +1,7 @@
 <%
- title "#{current_user.name.titleize} - Profile"
- meta_description "#{app_title} - #{current_user.name.titleize} - Profile"
- heading "#{current_user.name.titleize} - Profile"
+ title "#{@user.name.titleize} - Profile"
+ meta_description "#{app_title} - #{@user.name.titleize} - Profile"
+ heading "#{@user.name.titleize} - Profile"
  pclass "profile-page"
  heading_desc ""
 %>
@@ -11,10 +11,10 @@
     <div class="row">
       <div class="col-lg-3 ml-auto mr-auto">
         <div class="">
-          <% if current_user.image.nil? %>
+          <% if @user.image.nil? %>
             <%= image_tag('replace_me/400x450.jpg') %>
           <% else %>
-            <%= image_tag current_user.image %>
+            <%= image_tag @user.image %>
           <% end %>
         </div>
         <div class="list-group list-group-border-0 g-mb-40">
@@ -23,10 +23,18 @@
           <% end %>
           <%= link_to '#settings', class: "list-group-item list-group-item-action justify-content-between", "data-toggle" => "tab", role: "tablist" do %>
             <%= icon('fas', 'cogs') %>   Settings
-            <span class="badge badge-success">2</span>
+            <% if @score != 0 %>
+              <span class="badge badge-warning"><%= @score %></span>
+            <% end %>
           <% end %>
           <%= link_to '#security', class: "list-group-item list-group-item-action justify-content-between", "data-toggle" => "tab", role: "tablist" do %>
             <%= icon('fas', 'shield-alt') %>   Security Settings
+          <% end %>
+          <%= link_to '#activity', class: "list-group-item list-group-item-action justify-content-between", "data-toggle" => "tab", role: "tablist" do %>
+            <%= icon('far', 'chart-bar') %>   Account Activity
+            <% if @user.failed_attempts > 5 %>
+              <span class="badge badge-danger">1</span>
+            <% end %>
           <% end %>
           <%= link_to '#payment', class: "list-group-item list-group-item-action justify-content-between", "data-toggle" => "tab", role: "tablist" do %>
             <%= icon('fas', 'credit-card') %>   Payment Settings
@@ -39,6 +47,7 @@
       </div>
       <div class="col-lg-9">
         <div class="tab-content">
+          <%= form_errors_for @user %>
           <div class="tab-pane active show" id="overview">
             <%= render 'profiles/partials/overview' %>
           </div>
@@ -49,6 +58,10 @@
 
           <div class="tab-pane" id="security">
             <%= render 'profiles/partials/settings_security' %>
+          </div>
+
+          <div class="tab-pane" id="activity">
+            <%= render 'profiles/partials/settings_activity' %>
           </div>
 
           <div class="tab-pane" id="payment">

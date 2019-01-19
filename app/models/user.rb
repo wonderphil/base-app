@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   
-  before_save   :downcase_email, :update_provider
+  before_save   :downcase_email
 
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
@@ -19,6 +19,7 @@ class User < ApplicationRecord
   
   
   validates :email, presence: true, uniqueness: { case_sensitive: false }, 'valid_email2/email': { mx: true, disposable: true }
+  validates_presence_of :tcs, inclusion: { in: [ true ] }, message: "must be accepted to use this site!"
   #validates :image, :allow_blank
 
   def self.from_omniauth(auth)
@@ -29,6 +30,7 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.all = auth.to_json
       user.name = auth.info.name
+      user.tcs = true
       if auth.provider == 'amazon'
         user.location = auth.extra.postal_code
       else

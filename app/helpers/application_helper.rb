@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include DeviseHelper
   
   def title(page_title)
     content_for(:title) { page_title }

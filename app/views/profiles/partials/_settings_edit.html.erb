@@ -1,2 +1,47 @@
 <h2 class="h4 g-font-weight-300">Edit your Settings</h2>
-<p>Edit Settings.</p>
+
+<div>
+
+  
+  <%= form_for :user, namespace: 'settings', method: "patch" do |f| %>
+
+    
+    <div class="form-group row g-mb-25">
+      <%= f.label :tz, "Select Time Zone", class: "col-sm-3 col-form-label text-sm-right" %>
+      <div class="col-sm-9">
+        <%= f.time_zone_select :tz, nil, {}, {class: "selectpicker", "data-size" => "7", "data-style" => "btn btn-primary btn-round", title: "Select Time Zone"} %>
+        </div>
+    </div>
+
+    <div class="form-group row g-mb-25">
+      <%= f.label :location, "Location", class: "col-sm-3 col-form-label text-sm-right" %>
+      <div class="col-sm-9">
+        <%= f.text_field :location, autocomplete: "city", class: "form-control", placeholder: "City..." %>
+      </div>
+    </div>
+
+        <div class="form-group row g-mb-25">
+      <%= f.label :email, "Email Adress", class: "col-sm-3 col-form-label text-sm-right" %>
+      <div class="col-sm-9">
+        <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Email Address..." %>
+      </div>
+    </div>
+
+
+     <div class="form-group row g-mb-25">
+      <%= f.label :name, "Name", class: "col-sm-3 col-form-label text-sm-right" %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, autocomplete: "name", class: "form-control", placeholder: "Full Name..." %>
+      </div>
+    </div>
+
+
+
+
+    <div class="text-sm-right">
+      <%= f.submit "Update", class: "btn btn-primary btn-round btn-lg" %>
+    </div>
+
+  <% end %>
+</div>
+
