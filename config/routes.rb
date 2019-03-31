@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  mount_roboto
+  
   root 'pages#home'
   
   get   'contact',          to: 'messages#new'

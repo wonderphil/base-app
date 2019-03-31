@@ -32,7 +32,7 @@
           <% end %>
           <%= link_to '#activity', class: "list-group-item list-group-item-action justify-content-between", "data-toggle" => "tab", role: "tablist" do %>
             <%= icon('far', 'chart-bar') %>   Account Activity
-            <% if @user.failed_attempts > 5 %>
+            <% if @user.confirmed_at.nil? %>
               <span class="badge badge-danger">1</span>
             <% end %>
           <% end %>

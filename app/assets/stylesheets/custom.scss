@@ -11,9 +11,15 @@
   @extend .alert-danger;
 }
 
-// .pm-80 {
-//   margin-top: 80px;
-// }
+
+.mt-100 {
+  margin-top: 100px;
+}
+
+
+.mb-100 {
+  margin-bottom: 100px;
+}
 
 .recaptcha_error {
   position: relative;
@@ -151,9 +157,7 @@ li.coloured-primary {
 .carousel .carousel-inner {
   box-shadow: unset !important;
 }
-.mt-100 {
-  margin-top: 100px;
-}
+
 
 li.nav-link.nav-link-white {
   color: white;

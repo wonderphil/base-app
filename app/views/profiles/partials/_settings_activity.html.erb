@@ -58,7 +58,7 @@
 
   <li class="d-flex justify-content-between g-brd-bottom g-py-15 g-brd-gray-light-v4">
     <div class="">
-      <strong class="g-width-300">Account Confirmed On</strong>
+      <strong class="g-width-300 <%= "hightlight-red" if @user.confirmed_at.nil? %>">Account Confirmed On</strong>
       <span class="align-top">
         <% if @user.confirmed_at.nil? %>
           Account is pending (Account will automatically expirer at

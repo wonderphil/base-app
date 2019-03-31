@@ -89,7 +89,6 @@ group :development do
   gem 'rack-mini-profiler', '~> 1.0'          # Enable a debug toolbar to help profile your application
   gem 'rename'                                # Rename any Rails Application
   gem 'sitemap'                               # generate Site map
-  gem 'roboto'
 end
 
 group :test do
